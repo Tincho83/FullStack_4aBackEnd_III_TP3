@@ -33,7 +33,8 @@ export class ConnDBMongoDBSingleton {
 
             console.log(`Se establecio conexion con la base de datos "\x1b[34m${this.#conexion.db}\x1b[33m" de manera exitosa.                        
                         
-******************************************************************************\x1b[0m`.yellow);
+******************************************************************************\x1b[0m
+\x1b[34mLogs:\x1b[0m`.yellow);
 
 
             return this.#conexion;

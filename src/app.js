@@ -15,7 +15,7 @@ import { config, mode, debug } from './config/config.js';
 //import { connDB } from './dao/connDB.js';
 //import { ConnDBMongoDBSingleton as ConnectDB } from './dao/Singleton/ConnDBMongoDBSingleton.js';
 import { DAO } from './dao/factory.js';
-import { generateAdopt } from './utils/utils.js';
+import { generateAdopt, middLog, logger } from './utils/utils.js';
 import { errorHandler } from './middleware/ErrorsHandlers/errorHandler.js';
 
 import usersRouter from './routes/users.router.js';
@@ -23,7 +23,7 @@ import petsRouter from './routes/pets.router.js';
 import adoptionsRouter from './routes/adoption.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import mocksRouter from './routes/mocks.router.js';
-
+import loggerTestRouter from "./routes/loggerTest.router.js";
 
 
 console.time(`\x1b[34mTiempo de Carga de Aplicacion\x1b[0m`);
@@ -53,6 +53,8 @@ const PORT = config.PORT;
 const app = express();
 //const connection = mongoose.connect(config.MONGO_URL);
 
+app.use(middLog);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use(compress());  // por defecto comprime gzip | middlware a nivel de aplicación
@@ -70,7 +72,7 @@ app.use('/api/pets', petsRouter);
 app.use('/api/adoptions', adoptionsRouter);
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/mocks', mocksRouter);
-
+app.use("/", loggerTestRouter);
 app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.status(200).send('OK');
@@ -168,9 +170,9 @@ setTimeout(() => {
     }
     */
 
-    console.log(`Logs:
->`.blue);
-}, 3200);
+    //console.log(`Logs:`.blue);
+}, 32);
+
 
 
 process.on('exit', code => {

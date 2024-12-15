@@ -7,8 +7,9 @@ import Adoption from "../dao/Adoption.js";
 import UserRepository from "../repository/UserRepository.js";
 import PetRepository from "../repository/PetRepository.js";
 import AdoptionRepository from "../repository/AdoptionRepository.js";
+import { logger } from '../utils/utils.js';
 
-console.log(`> Services...`.blue);
+logger.debug("> Services...");
 
 export const usersService = new UserRepository(new Users());
 export const petsService = new PetRepository(new Pet());

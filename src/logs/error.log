@@ -1,0 +1,15 @@
+{"level":"debug","message":"> Services...","timestamp":"2024-12-15 02:09:50"}
+{"level":"debug","message":"> DAO...","timestamp":"2024-12-15 02:09:50"}
+{"level":"debug","message":"Esto es un log de nivel DEBUG","timestamp":"2024-12-15 02:09:58"}
+{"level":"http","message":"Esto es un log de nivel HTTP","timestamp":"2024-12-15 02:09:58"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-15 02:09:58"}
+{"level":"debug","message":"> Services...","timestamp":"2024-12-15 02:32:32"}
+{"level":"debug","message":"> DAO...","timestamp":"2024-12-15 02:32:32"}
+{"level":"debug","message":"Esto es un log de nivel DEBUG","timestamp":"2024-12-15 02:32:38"}
+{"level":"http","message":"Esto es un log de nivel HTTP","timestamp":"2024-12-15 02:32:38"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-15 02:32:38"}
+{"level":"debug","message":"> Services...","timestamp":"2024-12-15 02:40:08"}
+{"level":"debug","message":"> DAO...","timestamp":"2024-12-15 02:40:08"}
+{"level":"debug","message":"Esto es un log de nivel DEBUG","timestamp":"2024-12-15 02:40:17"}
+{"level":"http","message":"Esto es un log de nivel HTTP","timestamp":"2024-12-15 02:40:17"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-15 02:40:17"}

@@ -1,9 +1,11 @@
 import colors from 'colors';
+import { logger } from '../utils/utils.js';
 
 export default class PetDTO {
     static getPetInputFrom = (pet) => {
 
-        console.log(`> PETS DTO...`.blue);
+        //console.log(`> PETS DTO...`.blue);
+        logger.debug(`> PETS DTO...`);
 
         return {
             name: pet.name || '',

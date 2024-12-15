@@ -10,14 +10,26 @@ import { errorHandler } from "../middleware/ErrorsHandlers/errorHandler.js";
 const getAllUsers = async (req, res) => {
 
     console.log(`> USERS Controller: Get All...`.blue);
+    req.logger.info('> USERS Controller: Create...');
+    req.logger.warning('Faltan datos requeridos en el body'); //if !variable
+    req.logger.error(`El usuario con email ${email} ya existe`); // if variable existe
+    req.logger.fatal(`Error crítico en addUser: ${error.message}`); //catch error 500
+
+    //Generar Error para probar Logger
+    if (req.query.error) { throw new Error(`Error de prueba...!!!`) }
 
     try {
         const users = await usersService.getAll();
         res.send({ status: "success", payload: users })
     } catch (error) {
+        req.logger.log("error", error.message);
+        req.logger.error(`${error.message}`);
+        req.logger.verbose(`${error.message} - prueba log verbose`)
+
         console.error(error);
         res.status(500).send({ status: "error", error: "Internal Server Error" });
     }
+    req.logger.verbose(`Se ejecuto la ruta /api/heroes`)
 };
 
 

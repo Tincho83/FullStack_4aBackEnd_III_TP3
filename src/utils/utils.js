@@ -1,7 +1,8 @@
 import { fakerES as faker } from "@faker-js/faker";
 import { createHash, passwordValidation } from "./index.js";
-//import bcrypt from "bcrypt";
-
+import winston from "winston";
+import os from "os";
+import { mode, config, debug } from "../config/config.js";
 
 /*
 export const createHash = (password) => {
@@ -32,7 +33,7 @@ export const generateUser_Mock = () => {
     return {
         id, first_name, last_name, email, password, role, pets
     }
-    
+
 }
 
 export const generatePetCom = () => {
@@ -96,7 +97,112 @@ export const generateAdopt = () => {
     }
 }
 
+//Logger.1.
+const customLevels = {
+    levels: { debug: 0, http: 1, info: 2, warning: 3, error: 4, fatal: 5 },
+    colors: { debug: 'blue', http: 'magenta', info: 'green', warning: 'yellow', error: 'red', fatal: 'bold red' }
+};
+
+//Logger.2.
+winston.addColors(customLevels.colors);
+
+//Logger.3.
+const transports = [];
+if (mode === "dev") {
+    // Logger para desarrollo (nivel debug y solo consola)
+    transports.push(
+        new winston.transports.Console({
+            level: "debug", // Loguea desde debug hacia arriba
+            format: winston.format.combine(
+                winston.format.colorize(),
+                winston.format.simple()
+            ),
+        })
+    );
+} else {
+    // Logger para producción (nivel info, consola y archivo)
+    transports.push(
+        new winston.transports.Console({
+            level: "info",
+            format: winston.format.combine(
+                winston.format.colorize(),
+                winston.format.simple()
+            ),
+        }),
+        new winston.transports.File({
+            level: "info",
+            filename: "./src/logs/error.log",
+            format: winston.format.combine(
+                winston.format.timestamp(),
+                winston.format.json()
+            )
+        })
+    );
+}
+
+
+//Logger.3.
+const formatoMensaje = winston.format(log => {
+    // console.log(log)
+    //log.message += ` - hostname: ${os.hostname()} - user: ${os.userInfo().username}`
+
+    return log;
+})
+
+//Logger.4.
+const filtroVerboseHttp = winston.format(log => {
+    // console.log(log)
+    //if (log.level === "verbose" || log.level === "http") {
+     //   log.message += ` - hostname: ${os.hostname()} - user: ${os.userInfo().username}`
+    //    return log;
+    //}
+    return log;
+})
+
+//Logger.5.
+export const logger = winston.createLogger(
+    {
+        levels: customLevels.levels,
+        format: winston.format.combine(//winston.format.colorize(),
+            winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss', }),
+            winston.format.printf(({ level, message, timestamp }) => {
+                return `[${timestamp}] ${level}: ${message}`;
+            })
+        ),
+        transports
+        /*
+        transports: [new winston.transports.Console({
+            //level: "silly", // Silly >>> Debug >>> Verbose >>> Http >>> Info >>> Warn >>> Error
+            levels: customLevels.levels,
+            format: winston.format.combine(winston.format.colorize(),
+                winston.format.simple()
+            ),
+        }),
+        new winston.transports.File({
+            level: "info",
+            filename: "./src/logs/error.log",
+            format: winston.format.combine(
+                formatoMensaje(),
+                winston.format.timestamp(),
+                winston.format.prettyPrint()
+            )
+        }),
+        new winston.transports.File({
+            level: "verbose",
+            filename: "./src/logs/mensajesVerboseHttp.log",
+            format: winston.format.combine(
+                filtroVerboseHttp(),
+                winston.format.timestamp(),
+                winston.format.prettyPrint()
+            )
+        })
+        ]*/
+    }
+);
 
 
 
-
+export const middLog = (req, res, next) => {
+    req.logger = logger;
+    next();
+}

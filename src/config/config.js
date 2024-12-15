@@ -2,9 +2,9 @@ import dotenv from 'dotenv';
 import { Command, Option } from 'commander';
 import colors from 'colors';
 
+
 console.time(`\x1b[34mTiempo de Carga de Configuracion\x1b[0m`);
 console.log(`
-
 
 ******************************************************************************
 ******************************************************************************
@@ -28,8 +28,7 @@ appProgram.parse();
 //let mode = "dev" // dev para desarrollo prod produccion
 const { mode, debug } = appProgram.opts();
 let options = appProgram.opts();
-console.log(`>    Obteniendo argumentos de inicio de la App: 
->        ${JSON.stringify(options)}`.blue);
+console.log(`>    Obteniendo argumentos de inicio de la App: ${JSON.stringify(options)}`.blue);
 
 dotenv.config({
     path: mode === "prod" ? "./src/.env.prod" : "./src/.env.dev",
@@ -59,7 +58,8 @@ export const config = {
     GITHUB_CALLBACKURL: process.env.GITHUB_CALLBACKURL,
     PERSISTENCE: process.env.PERSISTENCE,
     GMAIL_ACCOUNT: process.env.GMAIL_ACCOUNT,
-    GMAIL_CODE: process.env.GMAIL_CODE
+    GMAIL_CODE: process.env.GMAIL_CODE,
+    APP_MODEEXEC: process.env.APP_MODEEXEC
 }
 
 export { mode, debug };
