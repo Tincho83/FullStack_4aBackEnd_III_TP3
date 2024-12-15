@@ -131,7 +131,7 @@ if (mode === "dev") {
         }),
         new winston.transports.File({
             level: "info",
-            filename: "./src/logs/error.log",
+            filename: "./src/logs/errors.log",
             format: winston.format.combine(
                 winston.format.timestamp(),
                 winston.format.json()
