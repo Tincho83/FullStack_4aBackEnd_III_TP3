@@ -14,7 +14,7 @@ import mongoose from 'mongoose';
 
 const getPets_Mock = async (req, res) => {
 
-    const { count = 100 } = req.query; // Número de mascotas (parámetro opcional, por defecto 100)
+    const { count = 100 } = req.query; // Nro de mascotas, por defecto 100
 
     console.log(`> MOCKS Controller: Get Mocks (${count} Pet's)...`.blue);
 
@@ -24,7 +24,7 @@ const getPets_Mock = async (req, res) => {
 
 const getUsers_Mock = async (req, res) => {
 
-    const { count = 50 } = req.query; // Número de mascotas (parámetro opcional, por defecto 50)
+    const { count = 50 } = req.query; // Nro de usuarios, por defecto 50
 
     console.log(`> MOCKS Controller: Get Mocks (${count} User's)...`.blue);
 
@@ -39,16 +39,13 @@ const generateData_Mock = async (req, res) => {
 
     if (!users || !pets) {
 
-        // Número de mascotas (parámetro opcional, por defecto 50)
+        // Nro de mascotas, por defecto 25 || Nro de usuarios, por defecto 25
         ({ users = 25, pets = 25 } = req.body);
         console.log(`**users Body: ${users}, pets: ${pets}`);
     }
 
     console.log(`> MOCKS Controller: Get Mocks ${users} User's and ${pets} Pet's...`.blue);
     //console.log(`> MOCKS Controller: Get Mocks (${count} User's)...`.blue);
-
-
-    
 
     try {
         // Insertar en MongoDB
@@ -69,7 +66,6 @@ const generateData_Mock = async (req, res) => {
     }
 
 };
-
 
 
 
