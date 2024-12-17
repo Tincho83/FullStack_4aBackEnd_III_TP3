@@ -1,0 +1,4 @@
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-17 20:20:23"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-17 20:20:23"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-17 20:20:23"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-17 20:20:23"}

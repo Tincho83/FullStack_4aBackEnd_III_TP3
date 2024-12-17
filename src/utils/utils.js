@@ -99,7 +99,7 @@ export const generateAdopt = () => {
 
 //Logger.1.
 const customLevels = {
-    levels: { debug: 0, http: 1, info: 2, warning: 3, error: 4, fatal: 5 },
+    levels: { debug: 5, http: 4, info: 3, warning: 2, error: 1, fatal: 0 },
     colors: { debug: 'blue', http: 'magenta', info: 'green', warning: 'yellow', error: 'red', fatal: 'bold red' }
 };
 
