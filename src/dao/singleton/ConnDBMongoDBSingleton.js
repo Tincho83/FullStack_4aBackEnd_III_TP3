@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import colors from 'colors';
+import { config } from '../../config/config.js';
+
 
 export class ConnDBMongoDBSingleton {
 
@@ -31,7 +33,7 @@ export class ConnDBMongoDBSingleton {
                 dbName: this.#conexion.db
             });
 
-            console.log(`Se establecio conexion con la base de datos "\x1b[34m${this.#conexion.db}\x1b[33m" de manera exitosa.                        
+            console.log(`Se establecio conexion con la base de datos \x1b[31m${config.APP_MODEEXEC}\x1b[0m "\x1b[34m${this.#conexion.db}\x1b[33m" correctamente.                        
                         
 ******************************************************************************\x1b[0m
 \x1b[34mLogs:\x1b[0m`.yellow);

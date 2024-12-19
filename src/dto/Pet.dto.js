@@ -3,8 +3,7 @@ import { logger } from '../utils/utils.js';
 
 export default class PetDTO {
     static getPetInputFrom = (pet) => {
-
-        //console.log(`> PETS DTO...`.blue);
+        
         logger.debug(`> PETS DTO...`);
 
         return {

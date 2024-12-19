@@ -1,38 +1,39 @@
+import { logger } from "../utils/utils.js";
 import adoptionModel from "./models/Adoption.js";
 
 export default class Adoption {
 
     get = (params) => {
 
-        console.log(`> ADOPTIONS DAO: Get...`.blue);
+        logger.debug(`> ADOPTIONS DAO: Get...`);
 
         return adoptionModel.find(params);
     }
 
     getBy = (params) => {
 
-        console.log(`> ADOPTIONS DAO: Get By...`.blue);
+        logger.debug(`> ADOPTIONS DAO: Get By...`);
 
         return adoptionModel.findOne(params);
     }
 
     save = (doc) => {
 
-        console.log(`> ADOPTIONS DAO: Save...`.blue);
+        logger.debug(`> ADOPTIONS DAO: Save...`);
 
         return adoptionModel.create(doc);
     }
 
     update = (id, doc) => {
 
-        console.log(`> ADOPTIONS DAO: Update...`.blue);
+        logger.debug(`> ADOPTIONS DAO: Update...`);
 
         return adoptionModel.findByIdAndUpdate(id, { $set: doc })
     }
 
     delete = (id) => {
 
-        console.log(`> ADOPTIONS DAO: Delete...`.blue);
+        logger.debug(`> ADOPTIONS DAO: Delete...`);
 
         return adoptionModel.findByIdAndDelete(id);
     }

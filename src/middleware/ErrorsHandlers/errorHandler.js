@@ -1,11 +1,13 @@
 //Manejo de Errores.5.
 import colors from 'colors';
+import { logger } from '../../utils/utils.js';
+
 
 export const errorHandler = (error, req, res, next) => {
 
     if (error.custom) {
         
-        console.log(``, error.cause.red);
+        logger.error(``, error.cause);
 
         res.setHeader('Content-Type', 'application/json');
         return res.status(error.code).json({ error: `${error.name}: ${error.message}` })
@@ -16,7 +18,7 @@ export const errorHandler = (error, req, res, next) => {
         return res.status(400).json({ status: "validationError", error: error.message });
     
     } else {
-        console.log(`[Error interno]:`, error.red);
+        logger.error(`[Error interno]:`, error);
         res.setHeader('Content-Type', 'application/json');
         return res.status(500).json({ status: "errorHandler", error: `Error interno del servidor: ${error.message}` })
     

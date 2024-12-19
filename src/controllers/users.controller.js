@@ -9,11 +9,11 @@ import { errorHandler } from "../middleware/ErrorsHandlers/errorHandler.js";
 
 const getAllUsers = async (req, res) => {
 
-    console.log(`> USERS Controller: Get All...`.blue);
-    req.logger.info('> USERS Controller: Create...');
-    req.logger.warning('Faltan datos requeridos en el body'); //if !variable
-    req.logger.error(`El usuario con email ${email} ya existe`); // if variable existe
-    req.logger.fatal(`Error crítico en addUser: ${error.message}`); //catch error 500
+    req.logger.debug('> USERS Controller: Get All...');
+    //req.logger.info('> USERS Controller: Create...');
+    //req.logger.warning('Faltan datos requeridos en el body'); //if !variable
+    //req.logger.error(`El usuario con email ${email} ya existe`); // if variable existe
+    //req.logger.fatal(`Error crítico en addUser: ${error.message}`); //catch error 500
 
     //Generar Error para probar Logger
     if (req.query.error) { throw new Error(`Error de prueba...!!!`) }
@@ -24,18 +24,19 @@ const getAllUsers = async (req, res) => {
     } catch (error) {
         req.logger.log("error", error.message);
         req.logger.error(`${error.message}`);
-        req.logger.verbose(`${error.message} - prueba log verbose`)
+        req.logger.debug(`${error.message} - prueba log verbose`)
 
         console.error(error);
         res.status(500).send({ status: "error", error: "Internal Server Error" });
     }
-    req.logger.verbose(`Se ejecuto la ruta /api/heroes`)
+
 };
 
 
 const getUser = async (req, res) => {
 
-    console.log(`> USERS Controller: Get...`.blue);
+  
+    req.logger.debug('> USERS Controller: Get...');
 
     try {
         const userId = req.params.uid;
@@ -62,12 +63,12 @@ const getUser = async (req, res) => {
 
 const addUser = async (req, res, next) => {
 
-    console.log(`> USERS Controller: Create...`.blue);
+    req.logger.debug('> USERS Controller: Create...');
 
     //const userId = req.params.uid;
     let { first_name, last_name, email, role, password } = req.body;
 
-    //console.log(first_name, last_name, role, email, password);
+    //req.logger.debug(first_name, last_name, role, email, password);
 
     try {
         if (!first_name || !last_name || !email || !password) {
@@ -113,7 +114,8 @@ const addUser = async (req, res, next) => {
 
 const updateUser = async (req, res) => {
 
-    console.log(`> USERS Controller: Update...`.blue);
+
+    req.logger.debug('> USERS Controller: Update...');
 
     try {
 
@@ -130,9 +132,10 @@ const updateUser = async (req, res) => {
             return res.status(404).send({ status: "error", error: "User not found" })
         }
 
-        console.log(user);
+        //req.logger.debug(user);
 
         const result = await usersService.update(userId, updateBody);
+        //req.logger.debug(result);
         res.send({ status: "success", message: "User updated" })
 
     } catch (error) {
@@ -145,7 +148,8 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
 
-    console.log(`> USERS Controller: Delete...`.blue);
+
+    req.logger.debug('> USERS Controller: Delete...');
 
     try {
         const userId = req.params.uid;

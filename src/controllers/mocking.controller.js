@@ -16,7 +16,7 @@ const getPets_Mock = async (req, res) => {
 
     const { count = 100 } = req.query; // Nro de mascotas, por defecto 100
 
-    console.log(`> MOCKS Controller: Get Mocks (${count} Pet's)...`.blue);
+    req.logger.debug(`> MOCKS Controller: Get Mocks (${count} Pet's)...`);
 
     const pets = Array.from({ length: count }, () => generatePet_Mock());
     res.send({ status: "success", payload: pets });
@@ -26,7 +26,7 @@ const getUsers_Mock = async (req, res) => {
 
     const { count = 50 } = req.query; // Nro de usuarios, por defecto 50
 
-    console.log(`> MOCKS Controller: Get Mocks (${count} User's)...`.blue);
+    req.logger.debug(`> MOCKS Controller: Get Mocks (${count} User's)...`);
 
     const users = Array.from({ length: count }, () => generateUser_Mock());
     res.send({ status: "success", payload: users });
@@ -35,22 +35,22 @@ const getUsers_Mock = async (req, res) => {
 const generateData_Mock = async (req, res) => {
 
     let { users, pets } = req.query;
-    console.log(`**Query users: ${users}, pets: ${pets}`);
+    req.logger.debug(`**Query users: ${users}, pets: ${pets}`);
 
     if (!users || !pets) {
 
         // Nro de mascotas, por defecto 25 || Nro de usuarios, por defecto 25
         ({ users = 25, pets = 25 } = req.body);
-        console.log(`**users Body: ${users}, pets: ${pets}`);
+        req.logger.debug(`**users Body: ${users}, pets: ${pets}`);
     }
 
-    console.log(`> MOCKS Controller: Get Mocks ${users} User's and ${pets} Pet's...`.blue);
-    //console.log(`> MOCKS Controller: Get Mocks (${count} User's)...`.blue);
+    req.logger.debug(`> MOCKS Controller: Get Mocks ${users} User's and ${pets} Pet's...`);
+    
 
     try {
         // Insertar en MongoDB
 
-        //console.log(generatedUsers);
+        //req.logger.debug(generatedUsers);
         //const users = Array.from({ length: count }, () => generateUser_Mock());
         const generatedUsers = Array.from({ length: users }, () => generateUser_Mock());
         await usersService.insertMany(generatedUsers);

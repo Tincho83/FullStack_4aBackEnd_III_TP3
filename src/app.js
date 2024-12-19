@@ -28,36 +28,15 @@ import loggerTestRouter from "./routes/loggerTest.router.js";
 
 console.time(`\x1b[34mTiempo de Carga de Aplicacion\x1b[0m`);
 
-/*
-console.log(`
-******************************************************************************
-******************************************************************************
-> Iniciando App...`.yellow);
-
-console.log(`
->> Obteniendo argumentos de inicio de App: `.yellow);
-
-const appProgram = new Command();
-appProgram.option("-p, --port <port>", "Numero de Puerto de escucha del Servidor. Si no se especifica se asignara el puerto 8080.", 8081);
-appProgram.option("-m, --mode <dev|prod>", "Modo de ejecucion: Desarrollo o Produccion. Si no se especifica se asignara el modo Dev.", "dev");
-appProgram.option("-d, --debug", "Modo depuracion de la aplicacion en valor Booleano. Si no se especifica se asignara el valor Booleano false.", false);
-//appProgram.requiredOption("-code, --code <code>", "Obligatorio: Codigo para iniciar la aplicacion.", "No se pudo obtener el codigo de seguridad.");
-
-
-appProgram.parse();
-let options = appProgram.opts();
-console.log(`>>>> ${JSON.stringify(options)}`.yellow);
-*/
 
 const PORT = config.PORT;
 const app = express();
-//const connection = mongoose.connect(config.MONGO_URL);
 
 app.use(middLog);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(compress());  // por defecto comprime gzip | middlware a nivel de aplicación
+
 app.use(compress({ brotli: { enabled: true, } }));
 app.use(cookieParser(config.CookieParser_SECRET));
 
@@ -77,21 +56,6 @@ app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'text/plain');
     res.status(200).send('OK');
 })
-
-/*
-app.get('/info', (req, res) => {
-
-    let texto=`texto muy muy muy muuuuuuuuy largo`.repeat(100_000_000);
-
-    let textoCromprimido=zlib.deflateSync(texto);
-    //let textoCromprimido=zlib.brotliCompressSync(texto);
-
-    res.setHeader('Content-Type', 'text/plain');
-    res.setHeader('Content-Encoding','deflate');
-    //res.setHeader('Content-Encoding','br');
-    res.status(200).send(textoCromprimido);
-})
-*/
 
 app.use(errorHandler);
 
@@ -124,7 +88,7 @@ let horahhmmss = moment().format('DD/MM/yyyy hh:mm:ss A');
 app.listen(PORT, () => {
     console.log(`
 ******************************************************************************
-*                   Servidor en linea sobre puerto ${PORT}                      *
+*                   Servidor en linea sobre puerto \x1b[37m${PORT}\x1b[33m                      *
 ******************************************************************************
 
     # Url:
@@ -154,23 +118,8 @@ app.listen(PORT, () => {
 });
 console.timeEnd(`\x1b[34mTiempo de Carga de Aplicacion\x1b[0m`);
 
-//console.log('\x1b[32m', 'Inicio de la aplicación', '\x1b[0m');
-//console.log('\x1b[31m', 'Error en el módulo XYZ', '\x1b[0m');
-//console.time('Cargad de Aplicacion');
-// ... código de tu aplicación
-//console.log('\x1b[34m', 'Cargad de Aplicacion:', '\x1b[0m', console.timeEnd('Cargad de Aplicacion'));
-
-
 setTimeout(() => {
-    /*
-    console.log(`> Generando Adopcion`.blue);
-    
-    for (let i = 0; i < 100; i++) {
-        console.log(`Adopción #${i + 1}:`, generateAdopt());
-    }
-    */
 
-    //console.log(`Logs:`.blue);
 }, 32);
 
 

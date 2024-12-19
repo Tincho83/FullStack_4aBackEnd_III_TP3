@@ -2,7 +2,7 @@ import { adoptionsService, petsService, usersService } from "../services/index.j
 
 const getAllAdoptions = async(req,res)=>{
 
-    console.log(`> ADOPTIONS Controller: Get All...`.blue);
+    req.logger.debug(`> ADOPTIONS Controller: Get All...`);
 
     const result = await adoptionsService.getAll();
     res.send({status:"success",payload:result})
@@ -10,7 +10,7 @@ const getAllAdoptions = async(req,res)=>{
 
 const getAdoption = async(req,res)=>{
 
-    console.log(`> ADOPTIONS Controller: Get...`.blue);
+    req.logger.debug(`> ADOPTIONS Controller: Get...`);
 
     const adoptionId = req.params.aid;
     const adoption = await adoptionsService.getBy({_id:adoptionId})
@@ -23,7 +23,7 @@ const getAdoption = async(req,res)=>{
 
 const createAdoption = async(req,res)=>{
 
-    console.log(`> ADOPTIONS Controller: Create...`.blue);
+    req.logger.debug(`> ADOPTIONS Controller: Create...`);
 
     const {uid,pid} = req.params;
     const user = await usersService.getUserById(uid);

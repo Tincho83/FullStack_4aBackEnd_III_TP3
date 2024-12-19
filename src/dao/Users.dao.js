@@ -1,3 +1,4 @@
+import { logger } from "../utils/utils.js";
 import userModel from "./models/User.js";
 
 
@@ -5,43 +6,42 @@ export default class Users {
 
     get = (params) => {
 
-        console.log(`> USERS DAO: Get...`.blue);
+        logger.debug(`> USERS DAO: Get...`);
 
         return userModel.find(params);
     }
 
     getBy = (params) => {
 
-        console.log(`> USERS DAO: GetBy...`.blue);
+        logger.debug(`> USERS DAO: GetBy...`);
 
         return userModel.findOne(params);
     }
 
     save = (doc) => {
 
-        console.log(`> USERS DAO: Save...`.blue);
+        logger.debug(`> USERS DAO: Save...`);
 
         return userModel.create(doc);
     }
 
     insertMany = (docs) => {
 
-        console.log(`> Users DAO: Insert Many...`.blue);
+        logger.debug(`> USERS DAO: Insert Many...`);
 
         return userModel.insertMany(docs);
     }
 
     update = (id, doc) => {
 
-        console.log(`> USERS DAO: Update...`.blue);
-
+        logger.debug(`> USERS DAO: Update...`);
 
         return userModel.findByIdAndUpdate(id, { $set: doc })
     }
 
     delete = (id) => {
-
-        console.log(`> USERS DAO: Delete...`.blue);
+        
+        logger.debug(`> USERS DAO: Delete...`);
 
         return userModel.findByIdAndDelete(id);
     }

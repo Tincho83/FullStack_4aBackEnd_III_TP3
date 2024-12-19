@@ -14,8 +14,7 @@ import mongoose from 'mongoose';
 
 
 const getAllPets = async (req, res) => {
-
-    //console.log(`> PETS Controller: Get All...`.blue);
+    
     req.logger.debug(`> PETS Controller: Get All....`);
 
     try {
@@ -33,7 +32,6 @@ const getPetById = async (req, res) => {
     try {
         const { pid } = req.params;
 
-        //console.log(`> PETS Controller: Get...`.blue);
         req.logger.debug(`> PETS Controller: Get ${pid}...`);
 
         if (!mongoose.Types.ObjectId.isValid(pid)) {
@@ -55,21 +53,8 @@ const getPetById = async (req, res) => {
     }
 };
 
-/*
-const getPets_Mock = async (req, res) => {
-
-    const { count = 100 } = req.query; // Número de mascotas (parámetro opcional, por defecto 100)
-
-    console.log(`> PETS Controller: Get Mocks (${count} Pet's)...`.blue);
-
-    const pets = Array.from({ length: count }, () => generatePet_Mock());
-    res.send({ status: "success", payload: pets });
-};
-*/
-
 const createPet = async (req, res) => {
 
-    //console.log(`> PETS Controller: Create...`.blue);
     req.logger.debug(`> PETS Controller: Create...`);
 
     const { name, specie, birthDate } = req.body;
@@ -86,22 +71,16 @@ const createPet = async (req, res) => {
 
 const createPetWithImage = async (req, res) => {
 
-    //console.log(`> PETS Controller: Create with image...`.blue);
     req.logger.debug(`> PETS Controller: Create with image...`);
 
     const file = req.file;
     const { name, specie, birthDate, image } = req.body;
 
-    //console.log(name, specie, birthDate, file);
-
     if (!name || !specie || !birthDate || !file) {
         return res.status(400).send({ status: "error", error: "Incomplete values" })
     }
 
-    //console.log(file);
     const pet = PetDTO.getPetInputFrom({ name, specie, birthDate, image: `${__dirname}/../public/img/${file.filename}` });
-
-    //console.log(pet);
 
     const result = await petsService.create(pet);
     res.send({ status: "success", payload: result })
@@ -113,7 +92,6 @@ const updatePet = async (req, res) => {
     const petUpdateBody = req.body;
     const petId = req.params.pid;
 
-    //console.log(`> PETS Controller: Update...`.blue);
     req.logger.debug(`> PETS Controller: Update ${petId}...`);
 
     const result = await petsService.update(petId, petUpdateBody);
@@ -125,7 +103,6 @@ const deletePet = async (req, res) => {
 
     const petId = req.params.pid;
 
-    //console.log(`> PETS Controller: Delete...`.blue);
     req.logger.debug(`> PETS Controller: Delete ${petId}...`);
 
 
@@ -137,7 +114,6 @@ const deletePet = async (req, res) => {
 export default {
     getAllPets,
     getPetById,
-    //getPets_Mock,
     createPet,
     updatePet,
     deletePet,
