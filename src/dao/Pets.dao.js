@@ -5,7 +5,7 @@ import petModel from "./models/Pet.js";
 export default class Pet {
 
     get = (params) => {
-        
+
         logger.debug(`> PETS DAO: Get...`);
 
         return petModel.find(params).lean();
@@ -20,7 +20,7 @@ export default class Pet {
 
     save = (doc) => {
 
-        logger.debug(`> PETS DAO: Save...`);
+        logger.debug(`> PETS DAO: Save...`);        
 
         return petModel.create(doc);
     }
@@ -40,7 +40,7 @@ export default class Pet {
     }
 
     delete = (id) => {
- 
+
         logger.debug(`> PETS DAO: Delete ${id}...`);
 
         return petModel.findByIdAndDelete(id);

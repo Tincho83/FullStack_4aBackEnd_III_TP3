@@ -30,7 +30,7 @@ appProgram.parse();
 //let mode = "dev" // dev para desarrollo prod produccion
 const { mode, debug } = appProgram.opts();
 let options = appProgram.opts();
-console.log(`>    Obteniendo argumentos de inicio de la App: ${JSON.stringify(options)}`.blue);
+//console.log(`>    Obteniendo argumentos de inicio: ${JSON.stringify(options)}`.blue);
 
 dotenv.config({
     path: mode === "prod" ? "./src/.env.prod" : "./src/.env.dev",

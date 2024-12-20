@@ -19,6 +19,7 @@ const getPets_Mock = async (req, res) => {
     req.logger.debug(`> MOCKS Controller: Get Mocks (${count} Pet's)...`);
 
     const pets = Array.from({ length: count }, () => generatePet_Mock());
+    req.logger.info(`> Get Mocks (${count} Pet's)...\r\n`);
     res.send({ status: "success", payload: pets });
 };
 
@@ -29,39 +30,43 @@ const getUsers_Mock = async (req, res) => {
     req.logger.debug(`> MOCKS Controller: Get Mocks (${count} User's)...`);
 
     const users = Array.from({ length: count }, () => generateUser_Mock());
+    req.logger.info(`> Get Mocks (${count} User's)...\r\n`);
     res.send({ status: "success", payload: users });
 };
 
 const generateData_Mock = async (req, res) => {
 
+    req.logger.debug(`> MOCKS Controller: GenerateData: Get Mocks User's and Pet's...`);
+
     let { users, pets } = req.query;
-    req.logger.debug(`**Query users: ${users}, pets: ${pets}`);
+    req.logger.debug(`> Mock from query: users: ${users}, pets: ${pets}`);
 
     if (!users || !pets) {
 
         // Nro de mascotas, por defecto 25 || Nro de usuarios, por defecto 25
         ({ users = 25, pets = 25 } = req.body);
-        req.logger.debug(`**users Body: ${users}, pets: ${pets}`);
+        req.logger.debug(`> Body Users: ${users}, Pets: ${pets}`);
     }
-
-    req.logger.debug(`> MOCKS Controller: Get Mocks ${users} User's and ${pets} Pet's...`);
-    
 
     try {
         // Insertar en MongoDB
 
         //req.logger.debug(generatedUsers);
         //const users = Array.from({ length: count }, () => generateUser_Mock());
+        req.logger.debug(`> MOCKS Controller: Generate Mocks ${users} User's...`);
         const generatedUsers = Array.from({ length: users }, () => generateUser_Mock());
         await usersService.insertMany(generatedUsers);
+        req.logger.info(`> Mocks Generated (${users} User's)...\r\n`);
 
+        req.logger.debug(`> MOCKS Controller: Generate Mocks ${pets} Pet's...`);
         const generatedPets = Array.from({ length: pets }, () => generatePet_Mock());
         await petsService.insertMany(generatedPets);
+        req.logger.info(`> Mocks Generated (${pets} Pet's)...\r\n`);
 
         //res.send({ status: "success", payload: pets });
         res.send({ status: "success", message: "Datos generados e insertados correctamente", users: generatedUsers.length, pets: generatedPets.length });
     } catch (error) {
-        console.error(`Error al insertar datos de prueba: ${error.message}`.red);
+        req.logger.error(`Error al insertar datos de prueba: ${error.message}`);
         res.status(500).send({ status: "error", message: "Error al insertar datos en la base de datos" });
     }
 

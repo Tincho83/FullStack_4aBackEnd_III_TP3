@@ -17,7 +17,6 @@ export const isValidPassword = (pass, hash) => {
 export const generateUser_Mock = () => {
 
     let password = "coder123";
-    //console.log("pass ori", password);
 
     let id = faker.database.mongodbObjectId();
     let first_name = faker.person.firstName();
@@ -28,29 +27,12 @@ export const generateUser_Mock = () => {
     let role = Math.random() < 0.76 ? "user" : "admin";
     let pets = []; // Sin propietario //faker.database.mongodbObjectId();
 
-    //console.log("pass hsh", password);
-    //console.log("rol ", role);
+    //logger.debug(`pass txt: coder123, pass hsh: ${password}, rol: ${role}`);
+
     return {
         id, first_name, last_name, email, password, role, pets
     }
-
-}
-
-export const generatePetCom = () => {
-    let id = faker.database.mongodbObjectId();
-    let nombreMasc = faker.animal.petName();
-    let especie = faker.animal.type();
-    let fechaNac = faker.date.birthdate();
-    let adoptado = faker.datatype.boolean();
-    let propietario = faker.database.mongodbObjectId();
-    let imagen = faker.image.url();
-
-   
-
-    return {
-        id, nombreMasc, especie, fechaNac, adoptado, propietario, imagen
-    }
-}
+};
 
 export const generatePet_Mock = () => {
     const id = faker.database.mongodbObjectId();
@@ -73,7 +55,27 @@ export const generateAdopt = () => {
         //propietario, nombreMasc
         pet
     }
+};
+/*
+export const generatePetCom = () => {
+    let id = faker.database.mongodbObjectId();
+    let nombreMasc = faker.animal.petName();
+    let especie = faker.animal.type();
+    let fechaNac = faker.date.birthdate();
+    let adoptado = faker.datatype.boolean();
+    let propietario = faker.database.mongodbObjectId();
+    let imagen = faker.image.url();
+
+
+
+    return {
+        id, nombreMasc, especie, fechaNac, adoptado, propietario, imagen
+    }
 }
+*/
+
+
+
 
 //Logger.1.
 const customLevels = {
@@ -93,7 +95,13 @@ if (mode === "dev") {
             level: "debug", // Loguea desde debug hacia arriba
             format: winston.format.combine(
                 winston.format.colorize(),
-                winston.format.simple()
+                winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+                winston.format.printf(({ timestamp, level, message }) => {
+                    return `[${timestamp}] ${level}: ${message}`;
+                }),
+                //winston.format.colorize(),
+                //winston.format.colorize(),
+                //winston.format.simple()
             ),
         })
     );
@@ -104,7 +112,7 @@ if (mode === "dev") {
             level: "info",
             format: winston.format.combine(
                 winston.format.colorize(),
-                winston.format.simple()
+                //winston.format.simple()
             ),
         }),
         new winston.transports.File({
@@ -121,7 +129,7 @@ if (mode === "dev") {
 
 //Logger.3.
 const formatoMensaje = winston.format(log => {
-    // console.log(log)
+    req.logger.debug(log);
     //log.message += ` - hostname: ${os.hostname()} - user: ${os.userInfo().username}`
 
     return log;
@@ -129,9 +137,9 @@ const formatoMensaje = winston.format(log => {
 
 //Logger.4.
 const filtroVerboseHttp = winston.format(log => {
-    // console.log(log)
+    req.logger.debug(log);
     //if (log.level === "verbose" || log.level === "http") {
-     //   log.message += ` - hostname: ${os.hostname()} - user: ${os.userInfo().username}`
+    //   log.message += ` - hostname: ${os.hostname()} - user: ${os.userInfo().username}`
     //    return log;
     //}
     return log;
@@ -142,8 +150,8 @@ export const logger = winston.createLogger(
     {
         levels: customLevels.levels,
         format: winston.format.combine(//winston.format.colorize(),
-            winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss', }),
-            winston.format.printf(({ level, message, timestamp }) => {
+            winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+            winston.format.printf(({ timestamp, level, message }) => {
                 return `[${timestamp}] ${level}: ${message}`;
             })
         ),

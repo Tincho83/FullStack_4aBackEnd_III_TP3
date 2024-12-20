@@ -1,19 +1,14 @@
 import express from 'express';
-//import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import colors from 'colors';
 import moment from 'moment';
 import { fork } from "child_process"
-//import { Command, Option } from 'commander';
-//import dotenv from 'dotenv';
 import os from 'os';
 import handlebars from 'express-handlebars'
 import compress from "express-compression"
 import zlib from "zlib"
 
 import { config, mode, debug } from './config/config.js';
-//import { connDB } from './dao/connDB.js';
-//import { ConnDBMongoDBSingleton as ConnectDB } from './dao/Singleton/ConnDBMongoDBSingleton.js';
 import { DAO } from './dao/factory.js';
 import { generateAdopt, middLog, logger } from './utils/utils.js';
 import { errorHandler } from './middleware/ErrorsHandlers/errorHandler.js';
@@ -27,7 +22,6 @@ import loggerTestRouter from "./routes/loggerTest.router.js";
 
 
 console.time(`\x1b[34mTiempo de Carga de Aplicacion\x1b[0m`);
-
 
 const PORT = config.PORT;
 const app = express();
@@ -44,7 +38,6 @@ app.use(express.static("./src/public"));
 app.engine('handlebars', handlebars.engine())
 app.set('view engine', 'handlebars')
 app.set('views', './src/views')
-
 
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
@@ -103,9 +96,9 @@ app.listen(PORT, () => {
     # IP's: ${osnet.map((net) => `${net.family}: ${net.address}`).join(' - ')}    
     # Con el usuario: "${username}" en Dominio: "${logonServer}" 
     # Desde la ruta: ${apppath}
-    # Con argumentos: ${procarg}
+    # Con argumentos en linea de comandos: ${procarg}
     # Modo de ejecución: ${mode}
-    # Debug: ${debug}
+    # Mod Debug: ${debug}
     # proceso Id principal: ${pid}    
     # en plataforma: ${platform}
     # con uso de memoria: ${memused.toFixed(2)} MB de ${memttl.toFixed(2)} MB

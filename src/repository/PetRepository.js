@@ -1,4 +1,3 @@
-import colors from 'colors';
 import { logger } from '../utils/utils.js';
 
 

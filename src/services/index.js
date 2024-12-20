@@ -1,5 +1,3 @@
-import colors from 'colors';
-
 import Users from "../dao/Users.dao.js";
 import Pet from "../dao/Pets.dao.js";
 import Adoption from "../dao/Adoption.js";

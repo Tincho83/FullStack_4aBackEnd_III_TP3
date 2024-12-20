@@ -14,100 +14,232 @@ import mongoose from 'mongoose';
 
 
 const getAllPets = async (req, res) => {
-    
+
     req.logger.debug(`> PETS Controller: Get All....`);
 
     try {
         const pets = await petsService.getAll();
+
+        req.logger.debug(`> All Pets listed.`);
+        req.logger.info(`Pets listed.\r\n`);
+
         res.send({ status: "success", payload: pets })
     } catch (error) {
-        console.error(error);
+        req.logger.debug(`${error.message}`);
+        req.logger.error(`${error.message}`);
+
         res.status(500).send({ status: "error", error: "Internal Server Error" });
     }
 };
 
 
-const getPetById = async (req, res) => {
+const getPetById = async (req, res, next) => {
 
     try {
         const { pid } = req.params;
 
-        req.logger.debug(`> PETS Controller: Get ${pid}...`);
+        req.logger.debug(`> PETS Controller: Get By ID: ${pid}...`);
 
         if (!mongoose.Types.ObjectId.isValid(pid)) {
-            //throw new Error('El ID proporcionado no es válido');
+            req.logger.debug(`> PETS Controller: Get By ID: Error en ID: ${pid}...`);
+            req.logger.error(`Invalid Pet.\r\n`);
+
             CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { pid }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const pet = await petsService.getBy(pid);
 
         if (!pet) {
-            CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.PET_NOT_FOUND);
+            req.logger.debug(`> PETS Controller: Get By ID: ID ${pid} not found...`);
+            req.logger.error(`Pet not found.\r\n`);
+
+            CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.NOT_FOUND);
         }
+
+        req.logger.debug(`> Pet ${pid} listed.`);
+        req.logger.info(`Pet listed.\r\n`);
 
         res.send({ status: "success", payload: pet });
 
     } catch (error) {
-        console.error(error);
-        res.status(500).send({ status: "error", error: "Internal Server Error" });
+        req.logger.error(error.message);
+
+        return next(error);
     }
 };
 
-const createPet = async (req, res) => {
+const createPet = async (req, res, next) => {
 
-    req.logger.debug(`> PETS Controller: Create...`);
+    try {
+        req.logger.debug(`> PETS Controller: Create...`);
 
-    const { name, specie, birthDate } = req.body;
-    if (!name || !specie || !birthDate) {
-        return res.status(400).send({ status: "error", error: "Incomplete values" })
+        const { name, specie, birthDate } = req.body;
+
+        if (!name || !specie) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.MISSING_FIELDS, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!name) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.NAME_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!specie) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.SPECIE_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        req.logger.debug(`> PETS Controller: Create: Creating From Body: ${JSON.stringify(req.body, null, 5)}`);
+
+        const pet = PetDTO.getPetInputFrom({ name, specie, birthDate });
+
+        const result = await petsService.create(pet);
+
+        req.logger.debug(`> Pet created: ${result}`);
+        req.logger.info(`Pet created.\r\n`);
+
+        res.send({ status: "success", payload: result })
+
+    } catch (error) {
+        req.logger.error(error.message);
+
+        return next(error);
     }
-
-    const pet = PetDTO.getPetInputFrom({ name, specie, birthDate });
-    const result = await petsService.create(pet);
-
-    res.send({ status: "success", payload: result })
 };
 
 
-const createPetWithImage = async (req, res) => {
+const createPetWithImage = async (req, res, next) => {
 
-    req.logger.debug(`> PETS Controller: Create with image...`);
+    try {
+        req.logger.debug(`> PETS Controller: Create with image...`);
 
-    const file = req.file;
-    const { name, specie, birthDate, image } = req.body;
+        const file = req.file;
+        const { name, specie, birthDate, image } = req.body;
+        if (!name || !specie || !file) {
+            req.logger.debug(`> PETS Controller: Create with image: Incomplete values... ${JSON.stringify(file, null, 5)} ${JSON.stringify(req.body, null, 5)}`);
+            req.logger.error('Incomplete registration values. Please verify data.\r\n');
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.MISSING_FIELDS, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
 
-    if (!name || !specie || !birthDate || !file) {
-        return res.status(400).send({ status: "error", error: "Incomplete values" })
+        if (!name) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.NAME_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!specie) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.SPECIE_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!file) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.FILE_NOT_FOUND, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+
+        req.logger.debug(`> PETS Controller: Create with image: Creating From File and Body: ${JSON.stringify(file, null, 5)}\r\n${JSON.stringify(req.body, null, 5)}`);
+
+        const pet = PetDTO.getPetInputFrom({ name, specie, birthDate, image: `${__dirname}/../public/img/${file.filename}` });
+
+        const result = await petsService.create(pet);
+
+        req.logger.debug(`> Pet created with image: ${result}`);
+        req.logger.info(`Pet created with image.\r\n`);
+
+        res.send({ status: "success", payload: result })
+    } catch (error) {
+        req.logger.error(error.message);
+
+        return next(error);
     }
-
-    const pet = PetDTO.getPetInputFrom({ name, specie, birthDate, image: `${__dirname}/../public/img/${file.filename}` });
-
-    const result = await petsService.create(pet);
-    res.send({ status: "success", payload: result })
 };
 
 
-const updatePet = async (req, res) => {
+const updatePet = async (req, res, next) => {
 
-    const petUpdateBody = req.body;
-    const petId = req.params.pid;
+    try {
+        const petUpdateBody = req.body;
+        const petId = req.params.pid;
+        const { name, specie, birthDate } = req.body;
 
-    req.logger.debug(`> PETS Controller: Update ${petId}...`);
+        req.logger.debug(`> PETS Controller: Update ${petId}...`);
 
-    const result = await petsService.update(petId, petUpdateBody);
-    res.send({ status: "success", message: "pet updated" })
+        if (!mongoose.Types.ObjectId.isValid(petId)) {
+            req.logger.debug(`> PETS Controller: Update: Error en ID: ${petId}...`);
+            req.logger.error(`Invalid Pet.\r\n`);
+
+            CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
+        }
+
+        if (!name || !specie) {
+            req.logger.debug(`> PETS Controller: Update: Incomplete values... ${JSON.stringify(req.body, null, 5)}`);
+            req.logger.error(' Incomplete values for update. Please verify data.\r\n');
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.MISSING_FIELDS, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!name) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.NAME_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!specie) {
+            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.SPECIE_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        const pet = await petsService.getBy(petId);
+
+        if (!pet) {
+            req.logger.debug(`> PETS Controller: Update: ID ${petId} not found...`);
+            req.logger.error(`Pet not found.\r\n`);
+
+            CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
+        }
+        const result = await petsService.update(petId, petUpdateBody);
+
+        req.logger.debug(`> Pet updated: ${result}`);
+        req.logger.info(`Pet updated.\r\n`);
+
+        res.send({ status: "success", message: "pet updated" })
+
+
+    } catch (error) {
+        req.logger.error(`${error.message}\r\n`);
+
+        return next(error);
+    }
 };
 
 
-const deletePet = async (req, res) => {
+const deletePet = async (req, res, next) => {
 
-    const petId = req.params.pid;
+    try {
+        const petId = req.params.pid;
 
-    req.logger.debug(`> PETS Controller: Delete ${petId}...`);
+        req.logger.debug(`> PETS Controller: Delete ${petId}...`);
+
+        if (!mongoose.Types.ObjectId.isValid(petId)) {
+
+            req.logger.debug(`> PETS Controller: Delete: Error en ID: ${petId}...`);
+            req.logger.error(`Invalid Pet.\r\n`);
+
+            CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
+        }
+
+        const pet = await petsService.getBy(petId);
+        if (!pet) {
+            req.logger.debug(`> PETS Controller: Delete: ID ${petId} not found...`);
+            req.logger.error(`Pet not found.\r\n`);
+
+            CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
+        }
+
+        const result = await petsService.delete(petId);
+
+        req.logger.debug(`> Pet deleted: ${result}`);
+        req.logger.info(`Pet deleted.\r\n`);
 
 
-    const result = await petsService.delete(petId);
-    res.send({ status: "success", message: "pet deleted" });
+        res.send({ status: "success", message: "pet deleted" });
+
+    } catch (error) {
+        req.logger.error(error.message);
+
+        return next(error);
+    }
 };
 
 

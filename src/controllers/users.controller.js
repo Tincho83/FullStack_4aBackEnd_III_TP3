@@ -5,170 +5,198 @@ import { ERROR_TYPES } from "../utils/ErrorsHandlers/EnumErrors.js";
 import { ERROR_MESSAGES } from "../utils/ErrorsHandlers/ErrorMessages.js";
 import mongoose from 'mongoose';
 import { errorHandler } from "../middleware/ErrorsHandlers/errorHandler.js";
+import { logger } from "../utils/utils.js";
 
 
 const getAllUsers = async (req, res) => {
 
     req.logger.debug('> USERS Controller: Get All...');
-    //req.logger.info('> USERS Controller: Create...');
-    //req.logger.warning('Faltan datos requeridos en el body'); //if !variable
-    //req.logger.error(`El usuario con email ${email} ya existe`); // if variable existe
-    //req.logger.fatal(`Error crítico en addUser: ${error.message}`); //catch error 500
-
-    //Generar Error para probar Logger
-    if (req.query.error) { throw new Error(`Error de prueba...!!!`) }
 
     try {
         const users = await usersService.getAll();
+
+        req.logger.debug(`> All Users listed.`);
+        req.logger.info(`Users listed.\r\n`);
+
         res.send({ status: "success", payload: users })
     } catch (error) {
-        req.logger.log("error", error.message);
+        req.logger.debug(`${error.message}`);
         req.logger.error(`${error.message}`);
-        req.logger.debug(`${error.message} - prueba log verbose`)
 
-        console.error(error);
         res.status(500).send({ status: "error", error: "Internal Server Error" });
     }
-
 };
 
 
-const getUser = async (req, res) => {
-
-  
-    req.logger.debug('> USERS Controller: Get...');
+const getUser = async (req, res, next) => {
 
     try {
         const userId = req.params.uid;
 
+        req.logger.debug(`> USERS Controller: Get By ID: ${userId}...`);
+
         if (!mongoose.Types.ObjectId.isValid(userId)) {
-            //throw new Error('El ID proporcionado no es válido');
-            CustomError.createError("Error de ID", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
+            req.logger.debug(`> USERS Controller: Get By ID: Error en ID: ${userId}...`);
+            req.logger.error(`User ID error.\r\n`);
+
+            CustomError.createError("User", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const user = await usersService.getUserById(userId);
 
         if (!user) {
-            return res.status(404).send({ status: "error", error: "User not found" })
+            req.logger.debug(`> USERS Controller: Get By ID: ID ${userId} not found...`);
+            req.logger.error(`User not found.\r\n`);
+
+            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
         }
+
+        req.logger.debug(`> User ${userId} listed.`);
+        req.logger.info(`User listed.\r\n`);
 
         res.send({ status: "success", payload: user })
 
     } catch (error) {
-        console.error(error);
-        res.status(500).send({ status: "error", error: "Internal Server Error" });
+        req.logger.error(error.message);
+
+        return next(error);
     }
 }
 
 
 const addUser = async (req, res, next) => {
 
-    req.logger.debug('> USERS Controller: Create...');
-
-    //const userId = req.params.uid;
-    let { first_name, last_name, email, role, password } = req.body;
-
-    //req.logger.debug(first_name, last_name, role, email, password);
-
     try {
+        req.logger.debug('> USERS Controller: Create...');
+
+        let { first_name, last_name, email, role, password } = req.body;
+
+        req.logger.debug(`> USER Controller: Create From Body: ${JSON.stringify(req.body, null, 5)}`);
+
         if (!first_name || !last_name || !email || !password) {
-            //return res.status(400).json({ status: "error", message: "Faltan datos requeridos." });
-            CustomError.createError("Error Alta de Usuario", ERROR_MESSAGES.USER.MISSING_FIELDS, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Create User Error", ERROR_MESSAGES.USER.MISSING_FIELDS, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         if (!first_name || !last_name) {
-            CustomError.createError("Error Alta de Usuario", ERROR_MESSAGES.USER.NAME_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Create User Error", ERROR_MESSAGES.USER.NAME_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         if (!email) {
-            CustomError.createError("Error Alta de Usuario", ERROR_MESSAGES.USER.EMAIL_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Create User Error", ERROR_MESSAGES.USER.EMAIL_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         if (!password) {
-            CustomError.createError("Error Alta de Usuario", ERROR_MESSAGES.USER.PASSWORD_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Create User Error", ERROR_MESSAGES.USER.PASSWORD_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
-
 
         const user = await usersService.getUserByEmail(email);
-
         //const user = await usersService.getUserById(userId);
         if (user) {
-            //CustomError.createError("Error Alta de Usuario", ERROR_MESSAGES.USER.USER_ALREADY_EXISTS, errorArgs(req.body), ERROR_TYPES.USER_ALREADY_EXISTS);
-            CustomError.createError("Error Alta de Usuario", ERROR_MESSAGES.USER.USER_ALREADY_EXISTS, errorArgsUser({ email }), ERROR_TYPES.USER_ALREADY_EXISTS);
+            req.logger.debug(`> USERS Controller: Create: Existing mail ${email}...`);
+            req.logger.error(`Existing mail.\r\n`);
+
+            CustomError.createError("Create User Error", ERROR_MESSAGES.USER.USER_ALREADY_EXISTS, errorArgsUser({ email }), ERROR_TYPES.USER_ALREADY_EXISTS);
         }
 
-        //res.send({ status: "success", payload: user })
-
         const result = await usersService.create({ first_name, last_name, email, role, password });
+
+        req.logger.debug(`> User created: ${result}`);
+        req.logger.info(`User created.\r\n`);
 
         res.send({ status: "success", payload: result })
 
     } catch (error) {
-        //console.error(error);
-        //res.status(500).send({ status: "error", error: "Internal Server Error" });
-        //res.status(error.code).send({ "error": error.name +": " +error.message });
+        req.logger.error(error.message);
+
         return next(error);
     }
 }
 
 
-const updateUser = async (req, res) => {
-
-
-    req.logger.debug('> USERS Controller: Update...');
+const updateUser = async (req, res, next) => {
 
     try {
-
+        const { first_name, last_name, email, password } = req.body;
         const updateBody = req.body;
         const userId = req.params.uid;
 
+        req.logger.debug(`> USERS Controller: Update ${userId}...`);
+
         if (!mongoose.Types.ObjectId.isValid(userId)) {
-            //throw new Error('El ID proporcionado no es válido');
-            CustomError.createError("Error de ID", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
+            req.logger.debug(`> USERS Controller: Update: Error en ID: ${userId}...`);
+            req.logger.error(`Invalid User.`);
+
+            CustomError.createError("User", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
+        }
+
+        if (!first_name || !last_name || !password) {
+            CustomError.createError("Update User", ERROR_MESSAGES.USER.MISSING_FIELDS, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!first_name || !last_name) {
+            CustomError.createError("Update User", ERROR_MESSAGES.USER.NAME_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+        }
+
+        if (!password) {
+            CustomError.createError("Update User", ERROR_MESSAGES.USER.PASSWORD_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         const user = await usersService.getUserById(userId);
         if (!user) {
-            return res.status(404).send({ status: "error", error: "User not found" })
+            req.logger.debug(`> USERS Controller: Update: ID ${userId} not found...`);
+            req.logger.error(`User not found.\r\n`);
+
+            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);            
         }
 
-        //req.logger.debug(user);
-
         const result = await usersService.update(userId, updateBody);
-        //req.logger.debug(result);
+
+        req.logger.debug(`> User updated: ${result}`);
+        req.logger.info(`User updated.\r\n`);
+
         res.send({ status: "success", message: "User updated" })
 
     } catch (error) {
-        console.error(error);
-        res.status(500).send({ status: "error", error: "Internal Server Error" });
-    }
+        req.logger.error(`${error.message}\r\n`);
 
+        return next(error);
+    }
 }
 
 
-const deleteUser = async (req, res) => {
-
-
-    req.logger.debug('> USERS Controller: Delete...');
+const deleteUser = async (req, res, next) => {
 
     try {
         const userId = req.params.uid;
 
+        req.logger.debug(`> USERS Controller: Delete ${userId}...`);
+
         if (!mongoose.Types.ObjectId.isValid(userId)) {
-            //throw new Error('El ID proporcionado no es válido');
-            CustomError.createError("Error de ID", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
+
+            req.logger.debug(`> USERS Controller: Delete: Error en ID: ${userId}...`);
+            req.logger.error(`User ID error.\r\n`);
+
+            CustomError.createError("User", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const user = await usersService.getUserById(userId);
         if (!user) {
-            return res.status(404).send({ status: "error", error: "User not found" })
+            req.logger.debug(`> USERS Controller: Delete: ID ${userId} not found...`);
+            req.logger.error(`User not found.\r\n`);
+
+            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);               
         }
 
         const result = await usersService.delete(userId);
+
+        req.logger.debug(`> User deleted: ${result}`);
+        req.logger.info(`User deleted.\r\n`);
+
         res.send({ status: "success", message: "User deleted" })
     } catch (error) {
-        console.error(error);
-        res.status(500).send({ status: "error", error: "Internal Server Error" });
+        req.logger.error(error.message);
+
+        return next(error);
     }
 }
 

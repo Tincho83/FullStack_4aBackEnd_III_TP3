@@ -1,4 +1,3 @@
-import colors from 'colors';
 import { logger } from '../utils/utils.js';
 
 export default class GenericRepository {
@@ -16,7 +15,7 @@ export default class GenericRepository {
 
     getBy = (params) => {
 
-        logger.debug(`> Generic Repository: Get By ${params}...`);
+        logger.debug(`> Generic Repository: Get By ID...`);
 
         return this.dao.getBy(params);
     }
