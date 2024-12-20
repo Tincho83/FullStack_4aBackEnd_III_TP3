@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import { config } from '../config/config.js';
 
-//Funcion de conexion a MongoDB
 export const connDB = async () => {
     try {
         await mongoose.connect(

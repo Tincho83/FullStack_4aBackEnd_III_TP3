@@ -10,11 +10,11 @@ import colors from 'colors';
 import multer from 'multer';
 import path from 'path';
 import mongoose from 'mongoose';
-
+import { errorArgsPet, errorArgsUser } from "../utils/ErrorsHandlers/DataErrors.js";
 
 const getPets_Mock = async (req, res) => {
 
-    const { count = 100 } = req.query; // Nro de mascotas, por defecto 100
+    const { count = 100 } = req.query;
 
     req.logger.debug(`> MOCKS Controller: Get Mocks (${count} Pet's)...`);
 
@@ -25,7 +25,7 @@ const getPets_Mock = async (req, res) => {
 
 const getUsers_Mock = async (req, res) => {
 
-    const { count = 50 } = req.query; // Nro de usuarios, por defecto 50
+    const { count = 32 } = req.query; 
 
     req.logger.debug(`> MOCKS Controller: Get Mocks (${count} User's)...`);
 
@@ -34,7 +34,7 @@ const getUsers_Mock = async (req, res) => {
     res.send({ status: "success", payload: users });
 };
 
-const generateData_Mock = async (req, res) => {
+const generateData_Mock = async (req, res, next) => {
 
     req.logger.debug(`> MOCKS Controller: GenerateData: Get Mocks User's and Pet's...`);
 
@@ -42,17 +42,12 @@ const generateData_Mock = async (req, res) => {
     req.logger.debug(`> Mock from query: users: ${users}, pets: ${pets}`);
 
     if (!users || !pets) {
-
-        // Nro de mascotas, por defecto 25 || Nro de usuarios, por defecto 25
+       
         ({ users = 25, pets = 25 } = req.body);
         req.logger.debug(`> Body Users: ${users}, Pets: ${pets}`);
     }
 
     try {
-        // Insertar en MongoDB
-
-        //req.logger.debug(generatedUsers);
-        //const users = Array.from({ length: count }, () => generateUser_Mock());
         req.logger.debug(`> MOCKS Controller: Generate Mocks ${users} User's...`);
         const generatedUsers = Array.from({ length: users }, () => generateUser_Mock());
         await usersService.insertMany(generatedUsers);
@@ -68,6 +63,7 @@ const generateData_Mock = async (req, res) => {
     } catch (error) {
         req.logger.error(`Error al insertar datos de prueba: ${error.message}`);
         res.status(500).send({ status: "error", message: "Error al insertar datos en la base de datos" });
+        return next(error);
     }
 
 };

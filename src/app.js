@@ -56,13 +56,13 @@ let servername = process.env.COMPUTERNAME;
 let oscpu = os.cpus()[0].model
 let numCPUs = os.cpus().length;
 let osnet = Object.values(os.networkInterfaces())
-    .flat() // Aplanar las interfaces en un solo array
-    .filter((iface) => iface && (iface.family === 'IPv4' || iface.family === 'IPv6')) // Filtrar solo IPv4 e IPv6
-    .map((iface) => ({ family: iface.family, address: iface.address })); // Mapear el resultado con familia y dirección
+    .flat() 
+    .filter((iface) => iface && (iface.family === 'IPv4' || iface.family === 'IPv6')) 
+    .map((iface) => ({ family: iface.family, address: iface.address })); 
 let osname = os.platform() === 'win32' ? 'Windows' : 'Otro';
 let osArch = os.arch();
 let osrelease = os.release();
-let osRAM = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2); // bytes a GB a 2 decimales
+let osRAM = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2); 
 let nodeversion = process.version;
 let modversion = process.versions;
 let pid = process.pid;

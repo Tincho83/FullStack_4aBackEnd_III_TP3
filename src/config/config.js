@@ -19,15 +19,11 @@ console.log(`
 
 const appProgram = new Command();
 
-//appProgram.option("-p, --port <port>", "Numero de Puerto de escucha del Servidor. Si no se especifica se asignara el puerto 8080.", 8080);
-//appProgram.option("-m, --mode <dev|prod>", "Modo de ejecucion: Desarrollo o Produccion. Si no se especifica se asignara el modo Dev.", "dev");
-//appProgram.requiredOption("-code, --code <code>", "Obligatorio: Codigo para iniciar la aplicacion.", "No se pudo obtener el codigo de seguridad.");
 appProgram.addOption(new Option("-m, --mode <mode>", "Modo de ejecución del script (Desarrollo o Produccion). Si no se especifica se asignara el modo Dev.").choices(["dev", "prod"]).default("dev"));
 appProgram.option("-d, --debug", "Modo depuracion de la aplicacion en valor Booleano. Si no se especifica se asignara el valor Booleano false.", false);
 
 appProgram.parse();
 
-//let mode = "dev" // dev para desarrollo prod produccion
 const { mode, debug } = appProgram.opts();
 let options = appProgram.opts();
 //console.log(`>    Obteniendo argumentos de inicio: ${JSON.stringify(options)}`.blue);

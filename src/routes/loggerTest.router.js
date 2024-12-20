@@ -4,7 +4,7 @@ import { logger } from "../utils/utils.js";
 const router = Router();
 
 router.get("/loggerTest", (req, res) => {
-    // Generar un log de cada nivel
+
     logger.debug("Esto es un log de nivel DEBUG");
     logger.http("Esto es un log de nivel HTTP");
     logger.info("Esto es un log de nivel INFO");

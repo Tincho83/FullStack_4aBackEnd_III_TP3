@@ -6,7 +6,6 @@ import { routerPETS } from '../middleware/ConsoleLog/routerConsoleLog.js';
 
 const router = Router();
 
-//router.get('/mockingpets', routerPETS, petsController.getPets_Mock);
 router.get('/', routerPETS, petsController.getAllPets);
 router.get('/:pid', routerPETS, petsController.getPetById);
 router.post('/', routerPETS, petsController.createPet); 

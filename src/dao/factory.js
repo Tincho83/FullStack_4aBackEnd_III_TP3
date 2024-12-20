@@ -7,10 +7,8 @@ let DAO;
 
 switch (config.PERSISTENCE) {
     case "MONGODB":
-        ConnectDB.conectarDB(config.MONGO_URL, config.MONGO_DBNAME);
-        
-        //const { UsersManagerMongoDB: UsersManager } = require("./db/UsersManagerMongoDB.js");
-        //DAO = UsersManager;
+        ConnectDB.conectarDB(config.MONGO_URL, config.MONGO_DBNAME);        
+
     break;
 
     case "FILESYSTEM":        

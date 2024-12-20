@@ -4,16 +4,6 @@ import winston from "winston";
 import os from "os";
 import { mode, config, debug } from "../config/config.js";
 
-/*
-export const createHash = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(11));
-};
-
-export const isValidPassword = (pass, hash) => {
-    return bcrypt.compareSync(pass, hash);
-};
-*/
-
 export const generateUser_Mock = () => {
 
     let password = "coder123";
@@ -26,8 +16,6 @@ export const generateUser_Mock = () => {
     password = createHash(password);
     let role = Math.random() < 0.76 ? "user" : "admin";
     let pets = []; // Sin propietario //faker.database.mongodbObjectId();
-
-    //logger.debug(`pass txt: coder123, pass hsh: ${password}, rol: ${role}`);
 
     return {
         id, first_name, last_name, email, password, role, pets
@@ -56,26 +44,6 @@ export const generateAdopt = () => {
         pet
     }
 };
-/*
-export const generatePetCom = () => {
-    let id = faker.database.mongodbObjectId();
-    let nombreMasc = faker.animal.petName();
-    let especie = faker.animal.type();
-    let fechaNac = faker.date.birthdate();
-    let adoptado = faker.datatype.boolean();
-    let propietario = faker.database.mongodbObjectId();
-    let imagen = faker.image.url();
-
-
-
-    return {
-        id, nombreMasc, especie, fechaNac, adoptado, propietario, imagen
-    }
-}
-*/
-
-
-
 
 //Logger.1.
 const customLevels = {

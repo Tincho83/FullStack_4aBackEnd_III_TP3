@@ -13,7 +13,6 @@ export const errorHandler = (error, req, res, next) => {
         return res.status(error.code).json({ error: `${error.name}: ${error.message}` })
     
     } else if (error.name === "ValidationError") {
-        // Manejo de errores de validación (por ejemplo, mongoose)
         res.setHeader('Content-Type', 'application/json');
         return res.status(400).json({ status: "validationError", error: error.message });
     
@@ -25,8 +24,3 @@ export const errorHandler = (error, req, res, next) => {
     }
 
 }
-
-
-
-// Ejemplo:
-// if (error.suggestion) { return res.status(error.code).json({ error: `${error.name}: ${error.message}`, suggestion: error.suggestion }); }
