@@ -38,8 +38,7 @@ const register = async (req, res, next) => {
 
         res.send({ status: "success", payload: result._id });
     } catch (error) {
-        req.logger.error(`${error.message}`);
-
+    
         return next(error);
 
     }
@@ -80,8 +79,7 @@ const login = async (req, res, next) => {
         res.cookie('coderCookie', token, { maxAge: 3600000 }).send({ status: "success", message: "Logged in" })
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
-
+   
         return next(error);
     }
 }
@@ -99,8 +97,7 @@ const current = async (req, res, next) => {
             return res.send({ status: "success", payload: user })
         }
     } catch (error) {
-        req.logger.error(`${error.message}`);
-
+  
         return next(error);
 
     }
@@ -136,8 +133,7 @@ const unprotectedLogin = async (req, res, next) => {
         const token = jwt.sign(user, 'tokenSecretJWT', { expiresIn: "1h" });
         res.cookie('unprotectedCookie', token, { maxAge: 3600000 }).send({ status: "success", message: "Unprotected Logged in" })
     } catch (error) {
-        req.logger.error(`${error.message}`);
-
+     
         return next(error);
     }
 }
@@ -155,8 +151,7 @@ const unprotectedCurrent = async (req, res, next) => {
             return res.send({ status: "success", payload: user })
         }
     } catch (error) {
-        req.logger.error(`${error.message}`);
-
+      
         return next(error);
 
     }

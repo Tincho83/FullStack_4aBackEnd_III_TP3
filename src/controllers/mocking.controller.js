@@ -16,7 +16,7 @@ const getPets_Mock = async (req, res) => {
 
     let { count = 100 } = req.query;
 
-     count = parseInt(count, 10);
+    count = parseInt(count, 10);
 
     if (!Number.isInteger(count) || count <= 0) {
         req.logger.error(`Invalid 'pets' value: ${count}. Must be a positive integer.`);
@@ -85,11 +85,10 @@ const generateData_Mock = async (req, res, next) => {
         const generatedPets = Array.from({ length: pets }, () => generatePet_Mock());
         await petsService.insertMany(generatedPets);
         req.logger.info(`> Mocks Generated (${pets} Pet's)...\r\n`);
-       
+
         res.send({ status: "success", message: "Datos generados e insertados correctamente", users: generatedUsers.length, pets: generatedPets.length });
     } catch (error) {
-        req.logger.error(`Error al insertar datos de prueba: ${error.message}`);
-        res.status(500).send({ status: "error", message: "Error al insertar datos en la base de datos" });
+        //res.status(500).send({ status: "error", message: "Error al insertar datos en la base de datos" });
         return next(error);
     }
 

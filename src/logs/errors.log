@@ -257,3 +257,18 @@
 {"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 00:03:24"}
 {"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-21 00:03:36"}
 {"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-21 00:03:36"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 14:42:47"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 14:43:11"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 14:43:33"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 14:44:35"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 14:44:41"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 14:45:24"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 14:45:33"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 14:45:41"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 14:46:34"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 14:46:56"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 14:47:28"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 14:48:19"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-21 14:48:25"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 14:49:09"}
+{"level":"error","message":"> The user already exists.***.","timestamp":"2024-12-21 14:49:19"}

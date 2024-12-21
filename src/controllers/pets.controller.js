@@ -61,7 +61,6 @@ const getPetById = async (req, res, next) => {
         res.send({ status: "success", payload: pet });
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -98,7 +97,7 @@ const createPet = async (req, res, next) => {
         res.send({ status: "success", payload: result })
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
+
 
         return next(error);
     }
@@ -141,7 +140,6 @@ const createPetWithImage = async (req, res, next) => {
 
         res.send({ status: "success", payload: result })
     } catch (error) {
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -192,7 +190,6 @@ const updatePet = async (req, res, next) => {
         res.send({ status: "success", message: "pet updated" })
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -229,8 +226,7 @@ const deletePet = async (req, res, next) => {
         res.send({ status: "success", message: "pet deleted" });
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
-
+   
         return next(error);
     }
 };

@@ -56,7 +56,6 @@ const getUser = async (req, res, next) => {
         res.send({ status: "success", payload: user })
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -105,7 +104,6 @@ const addUser = async (req, res, next) => {
         res.send({ status: "success", payload: result })
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -157,7 +155,7 @@ const updateUser = async (req, res, next) => {
         res.send({ status: "success", message: "User updated" })
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
+
 
         return next(error);
     }
@@ -193,7 +191,6 @@ const deleteUser = async (req, res, next) => {
 
         res.send({ status: "success", message: "User deleted" })
     } catch (error) {
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }

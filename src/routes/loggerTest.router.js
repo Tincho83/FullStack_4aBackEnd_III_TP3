@@ -5,14 +5,14 @@ const router = Router();
 
 router.get("/loggerTest", (req, res) => {
 
-    logger.debug("Esto es un log de nivel DEBUG");
-    logger.http("Esto es un log de nivel HTTP");
-    logger.info("Esto es un log de nivel INFO");
-    logger.warning("Esto es un log de nivel WARNING");
-    logger.error("Esto es un log de nivel ERROR");
-    logger.fatal("Esto es un log de nivel FATAL");
+    logger.debug("Log de nivel DEBUG");
+    logger.http("Log de nivel HTTP");
+    logger.info("Log de nivel INFO");
+    logger.warning("Log de nivel WARNING");
+    logger.error("Log de nivel ERROR");
+    logger.fatal("Log de nivel FATAL");
 
-    res.send("Logs (debug, http, info, warning, error, fatal) generados correctamente. Revisa la consola y archivos.");
+    res.send("Logs (debug, http, info, warning, error, fatal) generados correctamente. Revisar la consola y archivo de registo errors.log.");
 });
 
 export default router;

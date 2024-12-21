@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import colors from 'colors';
 import { config } from '../../config/config.js';
+import { logger } from '../../utils/utils.js';
 
 
 export class ConnDBMongoDBSingleton {
@@ -31,7 +32,7 @@ export class ConnDBMongoDBSingleton {
             await mongoose.connect(this.#conexion.url, {
                 dbName: this.#conexion.db
             });
-
+            
             console.log(`Se establecio conexion con la base de datos \x1b[31m${config.APP_MODEEXEC}\x1b[0m "\x1b[34m${this.#conexion.db}\x1b[33m" correctamente.                        
                         
 ******************************************************************************\x1b[0m
@@ -42,7 +43,7 @@ Solo se usa console.log en todo lo involucrado para mostrar informacion del inic
             return this.#conexion;
 
         } catch (error) {
-            console.error(`Error al conectar a MongoDB: ${error.message}`);
+            logger.error(`Error al conectar a MongoDB: ${error.message}`);
             // Reseteamos la conexión en caso de error
             this.#conexion = null;
             //process.exit(); 

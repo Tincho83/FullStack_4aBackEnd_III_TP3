@@ -51,7 +51,6 @@ const getAdoption = async (req, res, next) => {
 
         res.send({ status: "success", payload: adoption })
     } catch (error) {
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -128,8 +127,7 @@ const createAdoption = async (req, res, next) => {
         res.send({ status: "success", message: "Pet adopted" })
 
     } catch (error) {
-        req.logger.error(`${error.message}`);
-
+       
         return next(error);
     }
 }
