@@ -12,7 +12,6 @@ import path from 'path';
 import mongoose from 'mongoose';
 
 
-
 const getAllPets = async (req, res) => {
 
     req.logger.debug(`> PETS Controller: Get All....`);
@@ -24,8 +23,7 @@ const getAllPets = async (req, res) => {
         req.logger.info(`Pets listed.\r\n`);
 
         res.send({ status: "success", payload: pets })
-    } catch (error) {
-        req.logger.debug(`${error.message}`);
+    } catch (error) {        
         req.logger.error(`${error.message}`);
 
         res.status(500).send({ status: "error", error: "Internal Server Error" });
@@ -42,7 +40,7 @@ const getPetById = async (req, res, next) => {
 
         if (!mongoose.Types.ObjectId.isValid(pid)) {
             req.logger.debug(`> PETS Controller: Get By ID: Error en ID: ${pid}...`);
-            req.logger.error(`Invalid Pet.\r\n`);
+            req.logger.warning(`Invalid Pet.\r\n`);
 
             CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { pid }, ERROR_TYPES.TIPO_DE_DATOS);
         }
@@ -51,7 +49,7 @@ const getPetById = async (req, res, next) => {
 
         if (!pet) {
             req.logger.debug(`> PETS Controller: Get By ID: ID ${pid} not found...`);
-            req.logger.error(`Pet not found.\r\n`);
+            req.logger.warning(`Pet not found.\r\n`);
 
             CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.NOT_FOUND);
         }
@@ -62,7 +60,7 @@ const getPetById = async (req, res, next) => {
         res.send({ status: "success", payload: pet });
 
     } catch (error) {
-        req.logger.error(error.message);
+        //req.logger.error(error.message);
 
         return next(error);
     }
@@ -99,7 +97,7 @@ const createPet = async (req, res, next) => {
         res.send({ status: "success", payload: result })
 
     } catch (error) {
-        req.logger.error(error.message);
+        //req.logger.error(error.message);
 
         return next(error);
     }
@@ -114,8 +112,7 @@ const createPetWithImage = async (req, res, next) => {
         const file = req.file;
         const { name, specie, birthDate, image } = req.body;
         if (!name || !specie || !file) {
-            req.logger.debug(`> PETS Controller: Create with image: Incomplete values... ${JSON.stringify(file, null, 5)} ${JSON.stringify(req.body, null, 5)}`);
-            req.logger.error('Incomplete registration values. Please verify data.\r\n');
+            req.logger.debug(`> PETS Controller: Create with image: Incomplete registration values. Please verify data... ${JSON.stringify(file, null, 5)} ${JSON.stringify(req.body, null, 5)}`);
             CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.MISSING_FIELDS, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
@@ -143,7 +140,7 @@ const createPetWithImage = async (req, res, next) => {
 
         res.send({ status: "success", payload: result })
     } catch (error) {
-        req.logger.error(error.message);
+        //req.logger.error(error.message);
 
         return next(error);
     }
@@ -161,14 +158,13 @@ const updatePet = async (req, res, next) => {
 
         if (!mongoose.Types.ObjectId.isValid(petId)) {
             req.logger.debug(`> PETS Controller: Update: Error en ID: ${petId}...`);
-            req.logger.error(`Invalid Pet.\r\n`);
+            req.logger.warning(`Invalid Pet.\r\n`);
 
             CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         if (!name || !specie) {
-            req.logger.debug(`> PETS Controller: Update: Incomplete values... ${JSON.stringify(req.body, null, 5)}`);
-            req.logger.error(' Incomplete values for update. Please verify data.\r\n');
+            req.logger.debug(`> PETS Controller: Update: Incomplete values for update. Please verify data... ${JSON.stringify(req.body, null, 5)}`);
             CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.MISSING_FIELDS, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
@@ -181,10 +177,9 @@ const updatePet = async (req, res, next) => {
         }
 
         const pet = await petsService.getBy(petId);
-
         if (!pet) {
             req.logger.debug(`> PETS Controller: Update: ID ${petId} not found...`);
-            req.logger.error(`Pet not found.\r\n`);
+            req.logger.warning(`Pet not found.\r\n`);
 
             CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
         }
@@ -195,9 +190,8 @@ const updatePet = async (req, res, next) => {
 
         res.send({ status: "success", message: "pet updated" })
 
-
     } catch (error) {
-        req.logger.error(`${error.message}\r\n`);
+        //req.logger.error(`${error.message}\r\n`);
 
         return next(error);
     }
@@ -212,9 +206,8 @@ const deletePet = async (req, res, next) => {
         req.logger.debug(`> PETS Controller: Delete ${petId}...`);
 
         if (!mongoose.Types.ObjectId.isValid(petId)) {
-
             req.logger.debug(`> PETS Controller: Delete: Error en ID: ${petId}...`);
-            req.logger.error(`Invalid Pet.\r\n`);
+            req.logger.warning(`Invalid Pet.\r\n`);
 
             CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
@@ -222,7 +215,7 @@ const deletePet = async (req, res, next) => {
         const pet = await petsService.getBy(petId);
         if (!pet) {
             req.logger.debug(`> PETS Controller: Delete: ID ${petId} not found...`);
-            req.logger.error(`Pet not found.\r\n`);
+            req.logger.warning(`Pet not found.\r\n`);
 
             CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
         }
@@ -232,11 +225,10 @@ const deletePet = async (req, res, next) => {
         req.logger.debug(`> Pet deleted: ${result}`);
         req.logger.info(`Pet deleted.\r\n`);
 
-
         res.send({ status: "success", message: "pet deleted" });
 
     } catch (error) {
-        req.logger.error(error.message);
+        //req.logger.error(error.message);
 
         return next(error);
     }

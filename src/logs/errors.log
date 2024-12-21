@@ -2,3 +2,221 @@
 {"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-17 20:20:23"}
 {"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-17 20:20:23"}
 {"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-17 20:20:23"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 12:49:07"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 12:49:07"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 12:49:07"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 12:49:07"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 12:51:20"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 12:51:20"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 12:51:20"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 12:51:20"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 12:51:39"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 12:51:39"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 12:51:39"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 12:51:39"}
+{"level":"info","message":"> Get Mocks (2 Pet's)...\r\n","timestamp":"2024-12-20 12:52:30"}
+{"level":"info","message":"> Get Mocks (2 User's)...\r\n","timestamp":"2024-12-20 12:52:52"}
+{"level":"info","message":"> Mocks Generated (2 User's)...\r\n","timestamp":"2024-12-20 12:53:08"}
+{"level":"info","message":"> Mocks Generated (2 Pet's)...\r\n","timestamp":"2024-12-20 12:53:09"}
+{"level":"info","message":"Users listed.\r\n","timestamp":"2024-12-20 12:53:42"}
+{"level":"info","message":"User listed.\r\n","timestamp":"2024-12-20 12:54:13"}
+{"level":"error","message":"User ID error.\r\n","timestamp":"2024-12-20 12:54:20"}
+{"level":"error","message":"Invalid ID.***","timestamp":"2024-12-20 12:54:20"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:54:20","userId":"676592e49dc1a94db61ac42ee"}
+{"level":"error","message":"User not found.\r\n","timestamp":"2024-12-20 12:54:29"}
+{"level":"error","message":"User not found.***","timestamp":"2024-12-20 12:54:29"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:54:29","userId":"676592e49dc1a94db61ac42d"}
+{"level":"info","message":"User listed.\r\n","timestamp":"2024-12-20 12:54:37"}
+{"level":"error","message":"Fields need to be completed.***","timestamp":"2024-12-20 12:55:18"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:55:18"}
+{"level":"info","message":"User created.\r\n","timestamp":"2024-12-20 12:55:26"}
+{"level":"error","message":"Invalid User.","timestamp":"2024-12-20 12:56:03"}
+{"level":"error","message":"Invalid ID.***\r\n","timestamp":"2024-12-20 12:56:03"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:56:03","userId":"6765936e9dc1a94db61ac4399"}
+{"level":"error","message":"User not found.\r\n","timestamp":"2024-12-20 12:56:10"}
+{"level":"error","message":"User not found.***\r\n","timestamp":"2024-12-20 12:56:10"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:56:10","userId":"6765936e9dc1a94db61ac430"}
+{"level":"error","message":"Fields need to be completed.***\r\n","timestamp":"2024-12-20 12:56:18"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:56:18"}
+{"level":"info","message":"User updated.\r\n","timestamp":"2024-12-20 12:56:27"}
+{"level":"error","message":"User ID error.\r\n","timestamp":"2024-12-20 12:57:10"}
+{"level":"error","message":"Invalid ID.***","timestamp":"2024-12-20 12:57:10"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:57:10","userId":"6765936e9dc1a94db61ac4399"}
+{"level":"error","message":"User not found.\r\n","timestamp":"2024-12-20 12:57:16"}
+{"level":"error","message":"User not found.***","timestamp":"2024-12-20 12:57:16"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:57:16","userId":"6765936e9dc1a94db61ac430"}
+{"level":"info","message":"User deleted.\r\n","timestamp":"2024-12-20 12:57:24"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 12:58:14"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 12:58:14"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 12:58:14"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 12:58:14"}
+{"level":"error","message":"Fields need to be completed.***","timestamp":"2024-12-20 12:59:34"}
+{"level":"error","message":"","timestamp":"2024-12-20 12:59:34"}
+{"level":"error","message":"Fields need to be completed.***","timestamp":"2024-12-20 13:00:25"}
+{"level":"error","message":"","timestamp":"2024-12-20 13:00:25"}
+{"level":"info","message":"User created.\r\n","timestamp":"2024-12-20 13:00:32"}
+{"level":"info","message":"USer cookie.\r\n","timestamp":"2024-12-20 13:01:48"}
+{"level":"info","message":"Pets listed.\r\n","timestamp":"2024-12-20 20:45:33"}
+{"level":"info","message":"Pets listed.\r\n","timestamp":"2024-12-20 20:47:03"}
+{"level":"info","message":"Pet listed.\r\n","timestamp":"2024-12-20 20:48:38"}
+{"level":"warning","message":"Pet not found.\r\n","timestamp":"2024-12-20 20:49:10"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 20:49:10"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 20:49:26"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 20:49:26"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 20:49:55"}
+{"level":"info","message":"Pet created.\r\n","timestamp":"2024-12-20 20:50:16"}
+{"level":"info","message":"Pet created with image.\r\n","timestamp":"2024-12-20 20:51:14"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 20:51:26"}
+{"level":"info","message":"Pet created with image.\r\n","timestamp":"2024-12-20 20:51:34"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 20:52:09"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 20:52:19"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 20:52:19"}
+{"level":"warning","message":"Pet not found.\r\n","timestamp":"2024-12-20 20:52:25"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 20:52:25"}
+{"level":"info","message":"Pet updated.\r\n","timestamp":"2024-12-20 20:52:31"}
+{"level":"warning","message":"Pet not found.\r\n","timestamp":"2024-12-20 20:53:16"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 20:53:16"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 20:53:27"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 20:53:27"}
+{"level":"info","message":"Pet deleted.\r\n","timestamp":"2024-12-20 20:53:31"}
+{"level":"info","message":"Users listed.\r\n","timestamp":"2024-12-20 20:53:53"}
+{"level":"info","message":"User listed.\r\n","timestamp":"2024-12-20 20:54:25"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 20:55:01"}
+{"level":"info","message":"User created.\r\n","timestamp":"2024-12-20 20:55:10"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 21:09:28"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 21:09:28"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 21:09:28"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 21:09:28"}
+{"level":"info","message":"Pets listed.\r\n","timestamp":"2024-12-20 21:22:52"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 21:23:14"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:23:14"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 21:23:19"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:23:19"}
+{"level":"warning","message":"Pet not found.\r\n","timestamp":"2024-12-20 21:23:26"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 21:23:26"}
+{"level":"info","message":"Pet listed.\r\n","timestamp":"2024-12-20 21:23:33"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 21:26:40"}
+{"level":"info","message":"Pet created.\r\n","timestamp":"2024-12-20 21:26:58"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 21:27:21"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 21:27:34"}
+{"level":"info","message":"Pets listed.\r\n","timestamp":"2024-12-20 21:27:59"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 21:28:28"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 21:28:36"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:28:36"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 21:28:43"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:28:43"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 21:28:50"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:28:50"}
+{"level":"warning","message":"Pet not found.\r\n","timestamp":"2024-12-20 21:29:01"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 21:29:01"}
+{"level":"info","message":"Pet updated.\r\n","timestamp":"2024-12-20 21:29:07"}
+{"level":"warning","message":"Invalid Pet.\r\n","timestamp":"2024-12-20 21:30:08"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:30:08"}
+{"level":"warning","message":"Pet not found.\r\n","timestamp":"2024-12-20 21:30:15"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 21:30:15"}
+{"level":"info","message":"Pet deleted.\r\n","timestamp":"2024-12-20 21:30:20"}
+{"level":"info","message":"Users listed.\r\n","timestamp":"2024-12-20 21:31:03"}
+{"level":"info","message":"User listed.\r\n","timestamp":"2024-12-20 21:31:36"}
+{"level":"warning","message":"Invalid User.\r\n","timestamp":"2024-12-20 21:32:02"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:32:02"}
+{"level":"warning","message":"User not found.\r\n","timestamp":"2024-12-20 21:32:12"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-20 21:32:12"}
+{"level":"info","message":"User listed.\r\n","timestamp":"2024-12-20 21:32:18"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 21:34:40"}
+{"level":"info","message":"User created.\r\n","timestamp":"2024-12-20 21:34:49"}
+{"level":"warning","message":"Invalid User.","timestamp":"2024-12-20 21:35:42"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:35:42"}
+{"level":"warning","message":"User not found.\r\n","timestamp":"2024-12-20 21:35:49"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-20 21:35:49"}
+{"level":"info","message":"User updated.\r\n","timestamp":"2024-12-20 21:35:59"}
+{"level":"info","message":"User deleted.\r\n","timestamp":"2024-12-20 21:36:24"}
+{"level":"warning","message":"User ID error.\r\n","timestamp":"2024-12-20 21:36:29"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:36:30"}
+{"level":"warning","message":"User not found.\r\n","timestamp":"2024-12-20 21:36:33"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-20 21:36:33"}
+{"level":"info","message":"Adoptions listed.\r\n","timestamp":"2024-12-20 21:37:20"}
+{"level":"warning","message":"Adoption not found.\r\n","timestamp":"2024-12-20 21:37:51"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 21:37:51"}
+{"level":"warning","message":"Invalid Adoption.\r\n","timestamp":"2024-12-20 21:38:02"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:38:02"}
+{"level":"info","message":"Users listed.\r\n","timestamp":"2024-12-20 21:38:34"}
+{"level":"info","message":"Pets listed.\r\n","timestamp":"2024-12-20 21:39:12"}
+{"level":"warning","message":"Invalid Adoption.\r\n","timestamp":"2024-12-20 21:39:35"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:39:35"}
+{"level":"warning","message":"Invalid Adoption.\r\n","timestamp":"2024-12-20 21:39:47"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:39:47"}
+{"level":"warning","message":"User not found.\r\n","timestamp":"2024-12-20 21:39:55"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-20 21:39:55"}
+{"level":"warning","message":"Invalid Adoption.\r\n","timestamp":"2024-12-20 21:40:05"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 21:40:05"}
+{"level":"warning","message":"Pet not found.\r\n","timestamp":"2024-12-20 21:40:13"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 21:40:13"}
+{"level":"info","message":"Adoption modified.\r\n","timestamp":"2024-12-20 21:40:20"}
+{"level":"info","message":"Adoptions listed.\r\n","timestamp":"2024-12-20 21:40:33"}
+{"level":"warning","message":"Adoption not found.\r\n","timestamp":"2024-12-20 21:40:37"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-20 21:40:37"}
+{"level":"info","message":"Adoption listed.\r\n","timestamp":"2024-12-20 21:40:59"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 21:41:43"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 21:41:43"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 21:41:43"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 21:41:43"}
+{"level":"info","message":"> Get Mocks (2 Pet's)...\r\n","timestamp":"2024-12-20 21:42:10"}
+{"level":"info","message":"> Get Mocks (100 Pet's)...\r\n","timestamp":"2024-12-20 21:42:32"}
+{"level":"info","message":"> Get Mocks (2 User's)...\r\n","timestamp":"2024-12-20 21:42:56"}
+{"level":"info","message":"> Get Mocks (50 User's)...\r\n","timestamp":"2024-12-20 21:43:23"}
+{"level":"info","message":"> Mocks Generated (2 User's)...\r\n","timestamp":"2024-12-20 21:44:07"}
+{"level":"info","message":"> Mocks Generated (2 Pet's)...\r\n","timestamp":"2024-12-20 21:44:07"}
+{"level":"info","message":"> Mocks Generated (3 User's)...\r\n","timestamp":"2024-12-20 21:44:40"}
+{"level":"info","message":"> Mocks Generated (3 Pet's)...\r\n","timestamp":"2024-12-20 21:44:40"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 21:45:13"}
+{"level":"info","message":"User created.\r\n","timestamp":"2024-12-20 21:45:23"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-20 21:46:03"}
+{"level":"info","message":"USer cookie.\r\n","timestamp":"2024-12-20 21:46:34"}
+{"level":"info","message":"> Mocks Generated (2 User's)...\r\n","timestamp":"2024-12-20 21:52:47"}
+{"level":"info","message":"> Mocks Generated (2a Pet's)...\r\n","timestamp":"2024-12-20 21:52:47"}
+{"level":"info","message":"> Mocks Generated (2 User's)...\r\n","timestamp":"2024-12-20 21:54:37"}
+{"level":"info","message":"> Mocks Generated (2a Pet's)...\r\n","timestamp":"2024-12-20 21:54:37"}
+{"level":"info","message":"> Mocks Generated (2 User's)...\r\n","timestamp":"2024-12-20 21:57:11"}
+{"level":"info","message":"> Mocks Generated (2 Pet's)...\r\n","timestamp":"2024-12-20 21:57:12"}
+{"level":"info","message":"> Mocks Generated (2 User's)...\r\n","timestamp":"2024-12-20 21:57:30"}
+{"level":"info","message":"> Mocks Generated (7 Pet's)...\r\n","timestamp":"2024-12-20 21:57:30"}
+{"level":"info","message":"> Mocks Generated (8 User's)...\r\n","timestamp":"2024-12-20 21:58:27"}
+{"level":"info","message":"> Mocks Generated (7 Pet's)...\r\n","timestamp":"2024-12-20 21:58:27"}
+{"level":"info","message":"> Mocks Generated (8 User's)...\r\n","timestamp":"2024-12-20 21:59:43"}
+{"level":"info","message":"> Mocks Generated (7 Pet's)...\r\n","timestamp":"2024-12-20 21:59:43"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 22:03:32"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 22:03:32"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 22:03:32"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 22:03:32"}
+{"level":"error","message":"Invalid 'pets' value: 2. Must be a positive integer.","timestamp":"2024-12-20 22:06:16"}
+{"level":"error","message":"Invalid 'pets' value: 2. Must be a positive integer.","timestamp":"2024-12-20 22:07:40"}
+{"level":"info","message":"count 2","timestamp":"2024-12-20 22:07:58"}
+{"level":"info","message":"count 2","timestamp":"2024-12-20 22:08:29"}
+{"level":"info","message":"count 2","timestamp":"2024-12-20 22:08:29"}
+{"level":"info","message":"count 2","timestamp":"2024-12-20 22:08:29"}
+{"level":"info","message":"> Get Mocks (2 Pet's)...\r\n","timestamp":"2024-12-20 22:08:29"}
+{"level":"info","message":"> Get Mocks (2 Pet's)...\r\n","timestamp":"2024-12-20 22:09:22"}
+{"level":"info","message":"> Get Mocks (20 Pet's)...\r\n","timestamp":"2024-12-20 22:09:35"}
+{"level":"error","message":"Invalid 'pets' value: NaN. Must be a positive integer.","timestamp":"2024-12-20 22:09:44"}
+{"level":"info","message":"> Get Mocks (2 User's)...\r\n","timestamp":"2024-12-20 22:10:08"}
+{"level":"error","message":"Invalid 'pets' value: NaN. Must be a positive integer.","timestamp":"2024-12-20 22:10:29"}
+{"level":"info","message":"> Get Mocks (2 User's)...\r\n","timestamp":"2024-12-20 22:10:37"}
+{"level":"error","message":"Invalid 'users' value: NaN. Must be a positive integer.","timestamp":"2024-12-20 22:11:22"}
+{"level":"info","message":"> Mocks Generated (2 User's)...\r\n","timestamp":"2024-12-20 22:11:30"}
+{"level":"info","message":"> Mocks Generated (2 Pet's)...\r\n","timestamp":"2024-12-20 22:11:30"}
+{"level":"error","message":"Invalid 'pets' value: NaN. Must be a positive integer.","timestamp":"2024-12-20 22:11:40"}
+{"level":"info","message":"> Get Mocks (2 Pet's)...\r\n","timestamp":"2024-12-20 22:27:18"}
+{"level":"info","message":"> Get Mocks (100 Pet's)...\r\n","timestamp":"2024-12-20 22:27:29"}
+{"level":"info","message":"> Get Mocks (2 Pet's)...\r\n","timestamp":"2024-12-20 22:27:44"}
+{"level":"error","message":"Invalid 'pets' value: NaN. Must be a positive integer.","timestamp":"2024-12-20 22:27:53"}
+{"level":"info","message":"> Get Mocks (2 Pet's)...\r\n","timestamp":"2024-12-20 22:28:01"}
+{"level":"info","message":"Esto es un log de nivel INFO","timestamp":"2024-12-20 22:35:05"}
+{"level":"warning","message":"Esto es un log de nivel WARNING","timestamp":"2024-12-20 22:35:05"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-20 22:35:05"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-20 22:35:05"}
+{"level":"info","message":"> Get Mocks (2 User's)...\r\n","timestamp":"2024-12-20 22:37:05"}
+{"level":"info","message":"> Get Mocks (2 User's)...\r\n","timestamp":"2024-12-20 22:37:55"}
+{"level":"info","message":"> Mocks Generated (7 User's)...\r\n","timestamp":"2024-12-20 22:44:11"}
+{"level":"info","message":"> Mocks Generated (21 Pet's)...\r\n","timestamp":"2024-12-20 22:44:12"}
+{"level":"info","message":"Users listed.\r\n","timestamp":"2024-12-20 22:44:59"}
+{"level":"info","message":"Pets listed.\r\n","timestamp":"2024-12-20 22:45:11"}

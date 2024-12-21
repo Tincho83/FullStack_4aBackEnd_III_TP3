@@ -29,7 +29,7 @@ const register = async (req, res, next) => {
             CustomError.createError("Create User Error", ERROR_MESSAGES.USER.USER_ALREADY_EXISTS, errorArgsUser({ email }), ERROR_TYPES.USER_ALREADY_EXISTS);
         }
 
-        const hashedPassword = await createHash(password);
+        const hashedPassword = createHash(password);
         const user = { first_name, last_name, email, password: hashedPassword }
         let result = await usersService.create(user);
 
@@ -38,8 +38,6 @@ const register = async (req, res, next) => {
 
         res.send({ status: "success", payload: result._id });
     } catch (error) {
-        req.logger.debug(`${error.message}`);
-        req.logger.error(`${error.message}`);
 
         return next(error);
 
@@ -64,7 +62,10 @@ const login = async (req, res, next) => {
             CustomError.createError("Login User Error", ERROR_MESSAGES.USER.USER_NOT_FOUND, errorArgsUser({ email }), ERROR_TYPES.NOT_FOUND);
         }
 
+ 
+
         const isValidPassword = await passwordValidation(user, password);
+        //console.log(`email ${email}   pwd ${password}    pwdvd   ${isValidPassword}`);
         if (!isValidPassword) {
             req.logger.debug(`> SESSIONS Controller: Login: Incorrect Credenctials...`);
             req.logger.error(`Invalid Credentials.\r\n`);
@@ -72,6 +73,7 @@ const login = async (req, res, next) => {
             CustomError.createError("Login User Error", ERROR_MESSAGES.SESSION.INVALID_CRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
+        console.log(``);
         const userDto = UserDTO.getUserTokenFrom(user);
         req.logger.debug(`${JSON.stringify(userDto, null, 5)}`);
 
@@ -80,8 +82,6 @@ const login = async (req, res, next) => {
         res.cookie('coderCookie', token, { maxAge: 3600000 }).send({ status: "success", message: "Logged in" })
 
     } catch (error) {
-        req.logger.debug(`${error.message}`);
-        req.logger.error(`${error.message}`);
 
         return next(error);
     }

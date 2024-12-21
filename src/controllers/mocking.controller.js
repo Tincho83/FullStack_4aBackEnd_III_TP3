@@ -14,7 +14,14 @@ import { errorArgsPet, errorArgsUser } from "../utils/ErrorsHandlers/DataErrors.
 
 const getPets_Mock = async (req, res) => {
 
-    const { count = 100 } = req.query;
+    let { count = 100 } = req.query;
+
+     count = parseInt(count, 10);
+
+    if (!Number.isInteger(count) || count <= 0) {
+        req.logger.error(`Invalid 'pets' value: ${count}. Must be a positive integer.`);
+        return res.status(400).send({ status: "error", message: "'pets' must be a positive integer.", });
+    }
 
     req.logger.debug(`> MOCKS Controller: Get Mocks (${count} Pet's)...`);
 
@@ -25,7 +32,14 @@ const getPets_Mock = async (req, res) => {
 
 const getUsers_Mock = async (req, res) => {
 
-    const { count = 32 } = req.query; 
+    let { count = 50 } = req.query;
+
+    count = parseInt(count, 10);
+
+    if (!Number.isInteger(count) || count <= 0) {
+        req.logger.error(`Invalid 'pets' value: ${count}. Must be a positive integer.`);
+        return res.status(400).send({ status: "error", message: "'pets' must be a positive integer.", });
+    }
 
     req.logger.debug(`> MOCKS Controller: Get Mocks (${count} User's)...`);
 
@@ -42,10 +56,24 @@ const generateData_Mock = async (req, res, next) => {
     req.logger.debug(`> Mock from query: users: ${users}, pets: ${pets}`);
 
     if (!users || !pets) {
-       
-        ({ users = 25, pets = 25 } = req.body);
+        ({ users = 50, pets = 100 } = req.body);
         req.logger.debug(`> Body Users: ${users}, Pets: ${pets}`);
     }
+
+    users = parseInt(users, 10);
+    pets = parseInt(pets, 10);
+
+    if (!Number.isInteger(users) || users <= 0) {
+        req.logger.error(`Invalid 'users' value: ${users}. Must be a positive integer.`);
+        return res.status(400).send({ status: "error", message: "'users' must be a positive integer.", });
+    }
+
+    if (!Number.isInteger(pets) || pets <= 0) {
+        req.logger.error(`Invalid 'pets' value: ${pets}. Must be a positive integer.`);
+        return res.status(400).send({ status: "error", message: "'pets' must be a positive integer.", });
+    }
+
+
 
     try {
         req.logger.debug(`> MOCKS Controller: Generate Mocks ${users} User's...`);

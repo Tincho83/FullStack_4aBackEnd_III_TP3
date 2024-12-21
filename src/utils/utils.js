@@ -80,7 +80,11 @@ if (mode === "dev") {
             level: "info",
             format: winston.format.combine(
                 winston.format.colorize(),
-                //winston.format.simple()
+                //winston.format.simple(),
+                winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+                winston.format.printf(({ timestamp, level, message }) => {
+                    return `[${timestamp}] ${level}: ${message}`;
+                }),
             ),
         }),
         new winston.transports.File({

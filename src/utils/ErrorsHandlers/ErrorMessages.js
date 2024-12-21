@@ -29,4 +29,4 @@ export const ERROR_MESSAGES = {
     }
 };
 
-// Los errores comunes están centralizados en este diccionario
+// Los errores comunes centralizados en diccionario

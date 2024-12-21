@@ -1,0 +1,1 @@
+Get-Content "C:\Proyectos\4_BackEnd_III\TP\src\logs\errors.log" -Wait -Tail 30
