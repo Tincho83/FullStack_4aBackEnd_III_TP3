@@ -85,8 +85,7 @@ const generateData_Mock = async (req, res, next) => {
         const generatedPets = Array.from({ length: pets }, () => generatePet_Mock());
         await petsService.insertMany(generatedPets);
         req.logger.info(`> Mocks Generated (${pets} Pet's)...\r\n`);
-
-        //res.send({ status: "success", payload: pets });
+       
         res.send({ status: "success", message: "Datos generados e insertados correctamente", users: generatedUsers.length, pets: generatedPets.length });
     } catch (error) {
         req.logger.error(`Error al insertar datos de prueba: ${error.message}`);

@@ -11,6 +11,7 @@ import multer from 'multer';
 import path from 'path';
 import mongoose from 'mongoose';
 
+//throw new Error("Prueba"); //Para provocar error y probar
 
 const getAllPets = async (req, res) => {
 
@@ -23,7 +24,7 @@ const getAllPets = async (req, res) => {
         req.logger.info(`Pets listed.\r\n`);
 
         res.send({ status: "success", payload: pets })
-    } catch (error) {        
+    } catch (error) {
         req.logger.error(`${error.message}`);
 
         res.status(500).send({ status: "error", error: "Internal Server Error" });
@@ -39,19 +40,19 @@ const getPetById = async (req, res, next) => {
         req.logger.debug(`> PETS Controller: Get By ID: ${pid}...`);
 
         if (!mongoose.Types.ObjectId.isValid(pid)) {
-            req.logger.debug(`> PETS Controller: Get By ID: Error en ID: ${pid}...`);
-            req.logger.warning(`Invalid Pet.\r\n`);
+            req.logger.debug(`> PETS Controller: Get By ID: Invalid ID: ${pid}...`);
+            req.logger.warning(`Invalid Pet, try again.\r\n`);
 
-            CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { pid }, ERROR_TYPES.TIPO_DE_DATOS);
+            CustomError.createError("ID Error", ERROR_MESSAGES.PET.INVALID_ID, { pid }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const pet = await petsService.getBy(pid);
-
+        
         if (!pet) {
             req.logger.debug(`> PETS Controller: Get By ID: ID ${pid} not found...`);
             req.logger.warning(`Pet not found.\r\n`);
 
-            CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.NOT_FOUND);
+            CustomError.createError("Error searching for pet", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.NOT_FOUND);
         }
 
         req.logger.debug(`> Pet ${pid} listed.`);
@@ -60,7 +61,7 @@ const getPetById = async (req, res, next) => {
         res.send({ status: "success", payload: pet });
 
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -97,7 +98,7 @@ const createPet = async (req, res, next) => {
         res.send({ status: "success", payload: result })
 
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -140,7 +141,7 @@ const createPetWithImage = async (req, res, next) => {
 
         res.send({ status: "success", payload: result })
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -191,7 +192,7 @@ const updatePet = async (req, res, next) => {
         res.send({ status: "success", message: "pet updated" })
 
     } catch (error) {
-        //req.logger.error(`${error.message}\r\n`);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -228,7 +229,7 @@ const deletePet = async (req, res, next) => {
         res.send({ status: "success", message: "pet deleted" });
 
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }

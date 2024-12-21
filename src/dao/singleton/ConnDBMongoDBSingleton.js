@@ -14,9 +14,8 @@ export class ConnDBMongoDBSingleton {
     }
 
     static async conectarDB(url, db) {
-
-        //mongoose.set('strictQuery', true);  // default mongoose < v6
-        mongoose.set('strictQuery', false); // default mongoose > v7
+   
+        mongoose.set('strictQuery', false); // default mongoose > v7, mongoose.set('strictQuery', true);  default mongoose < v6
 
         try {
             // Si ya existe una conexion, la retornamos
@@ -36,6 +35,7 @@ export class ConnDBMongoDBSingleton {
             console.log(`Se establecio conexion con la base de datos \x1b[31m${config.APP_MODEEXEC}\x1b[0m "\x1b[34m${this.#conexion.db}\x1b[33m" correctamente.                        
                         
 ******************************************************************************\x1b[0m
+Solo se usa console.log en todo lo involucrado para mostrar informacion del inicio de la app.
 \x1b[34mLogs:\x1b[0m`.yellow);
 
 

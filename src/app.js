@@ -117,11 +117,12 @@ setTimeout(() => {
 
 
 
-process.on('exit', code => {
+process.on('exit', code => {    
     console.log(`
 > Saliendo de la App...
 ******************************************************************************
 ******************************************************************************`.blue);
+logger.error(`Saliendo de la App...`);
 });
 
 

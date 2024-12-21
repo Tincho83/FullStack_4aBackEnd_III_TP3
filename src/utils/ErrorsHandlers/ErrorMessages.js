@@ -1,6 +1,8 @@
 //Manejo de Errores.4. 
 
-export const ERROR_MESSAGES = {
+
+
+export const ERROR_MESSAGES = {    
     USER: {
         NAME_REQUIRED: "The user's name is required.***",
         EMAIL_REQUIRED: "Email is required.***",
@@ -28,5 +30,3 @@ export const ERROR_MESSAGES = {
         INTERNAL_ERROR: "Internal Error in the Server.***"
     }
 };
-
-// Los errores comunes centralizados en diccionario

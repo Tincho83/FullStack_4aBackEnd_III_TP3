@@ -220,3 +220,40 @@
 {"level":"info","message":"> Mocks Generated (21 Pet's)...\r\n","timestamp":"2024-12-20 22:44:12"}
 {"level":"info","message":"Users listed.\r\n","timestamp":"2024-12-20 22:44:59"}
 {"level":"info","message":"Pets listed.\r\n","timestamp":"2024-12-20 22:45:11"}
+{"level":"error","message":"Prueba","timestamp":"2024-12-20 23:30:31"}
+{"level":"error","message":"pitd is not defined","timestamp":"2024-12-20 23:31:51"}
+{"level":"error","message":"[Error interno]: pitd is not defined","stack":"ReferenceError: pitd is not defined\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:43:76)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at routerPETS (file:///C:/Proyectos/4_BackEnd_III/TP/src/middleware/ConsoleLog/routerConsoleLog.js:6:5)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\index.js:284:15\n    at param (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\index.js:365:14)","timestamp":"2024-12-20 23:31:51"}
+{"level":"error","message":"Prueba","timestamp":"2024-12-20 23:33:02"}
+{"level":"error","message":"[Error interno]: Prueba","stack":"Error: Prueba\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:50:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-20 23:33:02"}
+[2024-12-20 23:37:08] error: Prueba 
+[2024-12-20 23:37:08] error: [Error interno]: Prueba Error: Prueba
+    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:50:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-12-20 23:37:40] error: Prueba 
+[2024-12-20 23:37:40] error: [Error interno]: Prueba Error: Prueba
+    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:50:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+{"level":"error","message":"Prueba","timestamp":"2024-12-20 23:38:39"}
+{"level":"error","message":"[Error interno]: Prueba","stack":"Error: Prueba\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:50:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-20 23:38:39"}
+{"level":"error","message":"Prueba","timestamp":"2024-12-20 23:38:57"}
+{"level":"error","message":"[Error interno]: Prueba","stack":"Error: Prueba\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:50:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-20 23:38:57"}
+{"level":"error","message":"Prueba","timestamp":"2024-12-20 23:39:03"}
+{"level":"error","message":"[Error interno]: Prueba","stack":"Error: Prueba\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:50:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-20 23:39:03"}
+{"level":"error","message":"Invalid ID.***","timestamp":"2024-12-20 23:39:45"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 23:39:45"}
+{"level":"error","message":"Invalid ID.***","timestamp":"2024-12-20 23:43:42"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-20 23:43:42"}
+{"level":"error","message":"Invalid ID.***","timestamp":"2024-12-21 00:00:09"}
+{"level":"error","message":"> Invalid ID.***. Cause: {\n     \"pid\": \"676592e49dc1a94db61ac4310\"\n}","timestamp":"2024-12-21 00:00:09"}
+{"level":"error","message":"Prueba","timestamp":"2024-12-21 00:00:59"}
+{"level":"error","message":"[Error interno]: Prueba","stack":"Error: Prueba\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:50:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-12-21 00:00:59"}
+{"level":"error","message":"pitd is not defined","timestamp":"2024-12-21 00:01:49"}
+{"level":"error","message":"[Error interno]: pitd is not defined","stack":"ReferenceError: pitd is not defined\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:43:75)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at routerPETS (file:///C:/Proyectos/4_BackEnd_III/TP/src/middleware/ConsoleLog/routerConsoleLog.js:6:5)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\index.js:284:15\n    at param (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\index.js:365:14)","timestamp":"2024-12-21 00:01:49"}
+{"level":"error","message":"pitd is not defined","timestamp":"2024-12-21 00:02:39"}
+{"level":"error","message":"[Error interno]: pitd is not defined","stack":"ReferenceError: pitd is not defined\n    at getPetById (file:///C:/Proyectos/4_BackEnd_III/TP/src/controllers/pets.controller.js:43:75)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at routerPETS (file:///C:/Proyectos/4_BackEnd_III/TP/src/middleware/ConsoleLog/routerConsoleLog.js:6:5)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\index.js:284:15\n    at param (C:\\Proyectos\\4_BackEnd_III\\TP\\node_modules\\express\\lib\\router\\index.js:365:14)","timestamp":"2024-12-21 00:02:39"}
+{"level":"error","message":"Invalid ID.***","timestamp":"2024-12-21 00:03:18"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 00:03:18"}
+{"level":"error","message":"Pet not found.***","timestamp":"2024-12-21 00:03:24"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 00:03:24"}
+{"level":"error","message":"Esto es un log de nivel ERROR","timestamp":"2024-12-21 00:03:36"}
+{"level":"fatal","message":"Esto es un log de nivel FATAL","timestamp":"2024-12-21 00:03:36"}

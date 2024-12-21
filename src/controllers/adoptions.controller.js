@@ -5,7 +5,7 @@ import { ERROR_TYPES } from "../utils/ErrorsHandlers/EnumErrors.js";
 import { ERROR_MESSAGES } from "../utils/ErrorsHandlers/ErrorMessages.js";
 import mongoose from 'mongoose';
 
-const getAllAdoptions = async (req, res, next) => {
+const getAllAdoptions = async (req, res) => {
 
     req.logger.debug(`> ADOPTIONS Controller: Get All...`);
 
@@ -51,7 +51,7 @@ const getAdoption = async (req, res, next) => {
 
         res.send({ status: "success", payload: adoption })
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -98,9 +98,9 @@ const createAdoption = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Update: ID ${uid} not found...`);
             req.logger.warning(`User not found.\r\n`);
 
-            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { uid }, ERROR_TYPES.NOT_FOUND); 
+            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { uid }, ERROR_TYPES.NOT_FOUND);
         }
-   
+
         const pet = await petsService.getBy({ _id: pid });
         if (!pet) {
             req.logger.debug(`> PETS Controller: Get By ID: ID ${pid} not found...`);
@@ -108,7 +108,7 @@ const createAdoption = async (req, res, next) => {
 
             CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.NOT_FOUND);
         }
- 
+
         if (pet.adopted) {
             req.logger.debug(`> ADOPTIONS Controller: Get By ID: ID ${pid} Pet is already adopted...`);
             req.logger.warning(`Pet is already adopted. Pet not found.\r\n`);
@@ -128,7 +128,7 @@ const createAdoption = async (req, res, next) => {
         res.send({ status: "success", message: "Pet adopted" })
 
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }

@@ -20,7 +20,6 @@ const getAllUsers = async (req, res) => {
 
         res.send({ status: "success", payload: users })
     } catch (error) {
-        req.logger.debug(`${error.message}`);
         req.logger.error(`${error.message}`);
 
         res.status(500).send({ status: "error", error: "Internal Server Error" });
@@ -57,7 +56,7 @@ const getUser = async (req, res, next) => {
         res.send({ status: "success", payload: user })
 
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -90,7 +89,7 @@ const addUser = async (req, res, next) => {
         }
 
         const user = await usersService.getUserByEmail(email);
-        //const user = await usersService.getUserById(userId);
+
         if (user) {
             req.logger.debug(`> USERS Controller: Create: Existing mail ${email}...`);
             req.logger.info(`Existing mail.\r\n`);
@@ -106,7 +105,7 @@ const addUser = async (req, res, next) => {
         res.send({ status: "success", payload: result })
 
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -147,7 +146,7 @@ const updateUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Update: ID ${userId} not found...`);
             req.logger.warning(`User not found.\r\n`);
 
-            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);            
+            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
         }
 
         const result = await usersService.update(userId, updateBody);
@@ -158,7 +157,7 @@ const updateUser = async (req, res, next) => {
         res.send({ status: "success", message: "User updated" })
 
     } catch (error) {
-        //req.logger.error(`${error.message}\r\n`);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }
@@ -184,7 +183,7 @@ const deleteUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Delete: ID ${userId} not found...`);
             req.logger.warning(`User not found.\r\n`);
 
-            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);               
+            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
         }
 
         const result = await usersService.delete(userId);
@@ -194,7 +193,7 @@ const deleteUser = async (req, res, next) => {
 
         res.send({ status: "success", message: "User deleted" })
     } catch (error) {
-        //req.logger.error(error.message);
+        req.logger.error(`${error.message}`);
 
         return next(error);
     }

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "starts": "node ./src/app.js",
-    "start": "node ./src/app.js --mode prod",
+    "start": "nodemon ./src/app.js --mode prod",
     "dev": "nodemon ./src/app.js --mode dev",
     "test": "mocha test/supertest.test.js"
   },
