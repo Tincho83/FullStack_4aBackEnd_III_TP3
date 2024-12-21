@@ -8,7 +8,7 @@ export const ERROR_MESSAGES = {
         EMAIL_REQUIRED: "Email is required.***",
         PASSWORD_REQUIRED: "Password is required.***",
         USER_ALREADY_EXISTS: "The user already exists.***",
-        INVALID_ID: "Invalid ID.***",
+        INVALID_ID: "Invalid ID User.***",
         MISSING_FIELDS: "Fields need to be completed.***",
         USER_NOT_FOUND: "User not found.***"
     },
@@ -16,7 +16,7 @@ export const ERROR_MESSAGES = {
         PET_NOT_FOUND: "Pet not found.***",
         NAME_REQUIRED: "Name of the pet is required.***",
         SPECIE_REQUIRED: "Name of the pet is required.***",
-        INVALID_ID: "Invalid ID.***",
+        INVALID_ID: "Invalid ID Pet.***",
         MISSING_FIELDS: "Fields need to be completed.***",
         FILE_NOT_FOUND: "File not fouend.***"
     },

@@ -43,7 +43,7 @@ const getPetById = async (req, res, next) => {
             req.logger.debug(`> PETS Controller: Get By ID: Invalid ID: ${pid}...`);
             req.logger.warning(`Invalid Pet, try again.\r\n`);
 
-            CustomError.createError("ID Error", ERROR_MESSAGES.PET.INVALID_ID, { pid }, ERROR_TYPES.TIPO_DE_DATOS);
+            CustomError.createError("Pet ID Error", ERROR_MESSAGES.PET.INVALID_ID, { pid }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const pet = await petsService.getBy(pid);
@@ -52,7 +52,7 @@ const getPetById = async (req, res, next) => {
             req.logger.debug(`> PETS Controller: Get By ID: ID ${pid} not found...`);
             req.logger.warning(`Pet not found.\r\n`);
 
-            CustomError.createError("Error searching for pet", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.NOT_FOUND);
+            CustomError.createError("Pet not found", ERROR_MESSAGES.PET.PET_NOT_FOUND, { pid }, ERROR_TYPES.NOT_FOUND);
         }
 
         req.logger.debug(`> Pet ${pid} listed.`);
@@ -159,20 +159,20 @@ const updatePet = async (req, res, next) => {
             req.logger.debug(`> PETS Controller: Update: Error en ID: ${petId}...`);
             req.logger.warning(`Invalid Pet.\r\n`);
 
-            CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
+            CustomError.createError("Pet ID Error", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         if (!name || !specie) {
             req.logger.debug(`> PETS Controller: Update: Incomplete values for update. Please verify data... ${JSON.stringify(req.body, null, 5)}`);
-            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.MISSING_FIELDS, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Update Pet Error", ERROR_MESSAGES.PET.MISSING_FIELDS, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         if (!name) {
-            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.NAME_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Update Pet Error", ERROR_MESSAGES.PET.NAME_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         if (!specie) {
-            CustomError.createError("Create Pet Error", ERROR_MESSAGES.PET.SPECIE_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Update Pet Error", ERROR_MESSAGES.PET.SPECIE_REQUIRED, errorArgsPet(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         const pet = await petsService.getBy(petId);
@@ -180,7 +180,7 @@ const updatePet = async (req, res, next) => {
             req.logger.debug(`> PETS Controller: Update: ID ${petId} not found...`);
             req.logger.warning(`Pet not found.\r\n`);
 
-            CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
+            CustomError.createError("Pet not found", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
         }
         const result = await petsService.update(petId, petUpdateBody);
 
@@ -207,7 +207,7 @@ const deletePet = async (req, res, next) => {
             req.logger.debug(`> PETS Controller: Delete: Error en ID: ${petId}...`);
             req.logger.warning(`Invalid Pet.\r\n`);
 
-            CustomError.createError("Error de ID", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
+            CustomError.createError("Pet ID Error", ERROR_MESSAGES.PET.INVALID_ID, { petId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const pet = await petsService.getBy(petId);
@@ -215,7 +215,7 @@ const deletePet = async (req, res, next) => {
             req.logger.debug(`> PETS Controller: Delete: ID ${petId} not found...`);
             req.logger.warning(`Pet not found.\r\n`);
 
-            CustomError.createError("Error al buscar mascota", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
+            CustomError.createError("Pet not found", ERROR_MESSAGES.PET.PET_NOT_FOUND, { petId }, ERROR_TYPES.NOT_FOUND);
         }
 
         const result = await petsService.delete(petId);

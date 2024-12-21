@@ -38,7 +38,7 @@ const getUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Get By ID: Error en ID: ${userId}...`);
             req.logger.warning(`Invalid User.\r\n`);
 
-            CustomError.createError("Error de ID", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
+            CustomError.createError("User ID Error", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const user = await usersService.getUserById(userId);
@@ -47,7 +47,7 @@ const getUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Get By ID: ID ${userId} not found...`);
             req.logger.warning(`User not found.\r\n`);
 
-            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
+            CustomError.createError("User Not Found", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
         }
 
         req.logger.debug(`> User ${userId} listed.`);
@@ -93,7 +93,7 @@ const addUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Create: Existing mail ${email}...`);
             req.logger.info(`Existing mail.\r\n`);
 
-            CustomError.createError("Create User Error", ERROR_MESSAGES.USER.USER_ALREADY_EXISTS, errorArgsUser({ email }), ERROR_TYPES.USER_ALREADY_EXISTS);
+            CustomError.createError("User already exist.", ERROR_MESSAGES.USER.USER_ALREADY_EXISTS, errorArgsUser({ email }), ERROR_TYPES.USER_ALREADY_EXISTS);
         }
 
         const result = await usersService.create({ first_name, last_name, email, role, password });
@@ -123,20 +123,20 @@ const updateUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Update: Error en ID: ${userId}...`);
             req.logger.warning(`Invalid User.`);
 
-            CustomError.createError("Error de ID", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
+            CustomError.createError("User ID Error", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         if (!first_name || !last_name || !password) {
             req.logger.debug(`> USERS Controller: Update: Incomplete values for update. Please verify data... ${JSON.stringify(req.body, null, 5)}`);
-            CustomError.createError("Update User", ERROR_MESSAGES.USER.MISSING_FIELDS, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Update User Error", ERROR_MESSAGES.USER.MISSING_FIELDS, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         if (!first_name || !last_name) {
-            CustomError.createError("Update User", ERROR_MESSAGES.USER.NAME_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Update User Error", ERROR_MESSAGES.USER.NAME_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         if (!password) {
-            CustomError.createError("Update User", ERROR_MESSAGES.USER.PASSWORD_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
+            CustomError.createError("Update User Error", ERROR_MESSAGES.USER.PASSWORD_REQUIRED, errorArgsUser(req.body), ERROR_TYPES.ARGUMENTOS_INVALIDOS);
         }
 
         const user = await usersService.getUserById(userId);
@@ -144,7 +144,7 @@ const updateUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Update: ID ${userId} not found...`);
             req.logger.warning(`User not found.\r\n`);
 
-            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
+            CustomError.createError("User Not Found", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
         }
 
         const result = await usersService.update(userId, updateBody);
@@ -173,7 +173,7 @@ const deleteUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Delete: Error en ID: ${userId}...`);
             req.logger.warning(`User ID error.\r\n`);
 
-            CustomError.createError("User", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
+            CustomError.createError("User ID Error", ERROR_MESSAGES.USER.INVALID_ID, { userId }, ERROR_TYPES.TIPO_DE_DATOS);
         }
 
         const user = await usersService.getUserById(userId);
@@ -181,7 +181,7 @@ const deleteUser = async (req, res, next) => {
             req.logger.debug(`> USERS Controller: Delete: ID ${userId} not found...`);
             req.logger.warning(`User not found.\r\n`);
 
-            CustomError.createError("User", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
+            CustomError.createError("User Not Found", ERROR_MESSAGES.USER.USER_NOT_FOUND, { userId }, ERROR_TYPES.NOT_FOUND);
         }
 
         const result = await usersService.delete(userId);

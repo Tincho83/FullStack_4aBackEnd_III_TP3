@@ -272,3 +272,39 @@
 {"level":"error","message":"> User not found.***.","timestamp":"2024-12-21 14:48:25"}
 {"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 14:49:09"}
 {"level":"error","message":"> The user already exists.***.","timestamp":"2024-12-21 14:49:19"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 14:54:56"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-21 14:55:05"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 14:55:25"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-21 14:55:32"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-21 14:56:19"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 14:56:23"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 15:05:17"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 15:05:25"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 15:05:44"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 15:05:52"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-21 15:06:10"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 15:06:19"}
+{"level":"error","message":"Log de nivel ERROR","timestamp":"2024-12-21 15:06:34"}
+{"level":"fatal","message":"Log de nivel FATAL","timestamp":"2024-12-21 15:06:34"}
+{"level":"error","message":"Invalid 'pets' value: NaN. Must be a positive integer.","timestamp":"2024-12-21 15:07:30"}
+{"level":"error","message":"Invalid 'pets' value: NaN. Must be a positive integer.","timestamp":"2024-12-21 15:08:37"}
+{"level":"error","message":"Invalid 'users' value: -7. Must be a positive integer.","timestamp":"2024-12-21 15:09:36"}
+{"level":"error","message":"Invalid 'users' value: NaN. Must be a positive integer.","timestamp":"2024-12-21 15:09:45"}
+{"level":"error","message":"Invalid 'pets' value: -21. Must be a positive integer.","timestamp":"2024-12-21 15:09:57"}
+{"level":"error","message":"Invalid 'pets' value: NaN. Must be a positive integer.","timestamp":"2024-12-21 15:10:05"}
+{"level":"error","message":"Invalid 'users' value: -3. Must be a positive integer.","timestamp":"2024-12-21 15:11:33"}
+{"level":"error","message":"Invalid 'pets' value: -3. Must be a positive integer.","timestamp":"2024-12-21 15:11:42"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 15:13:33"}
+{"level":"error","message":"Existing mail.\r\n","timestamp":"2024-12-21 15:13:45"}
+{"level":"error","message":"> The user already exists.***.","timestamp":"2024-12-21 15:13:45"}
+{"level":"error","message":"> Fields need to be completed.***.","timestamp":"2024-12-21 15:14:14"}
+{"level":"error","message":"Invalid mail.\r\n","timestamp":"2024-12-21 15:14:24"}
+{"level":"error","message":"> User not found.***.","timestamp":"2024-12-21 15:14:24"}
+{"level":"error","message":"Invalid Credentials.\r\n","timestamp":"2024-12-21 15:14:33"}
+{"level":"error","message":"> Invalid Credentials.***.","timestamp":"2024-12-21 15:14:33"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 15:37:25"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 15:38:13"}
+{"level":"error","message":"> Invalid ID.***.","timestamp":"2024-12-21 15:38:46"}
+{"level":"error","message":"> Invalid ID PEt.***.","timestamp":"2024-12-21 15:39:42"}
+{"level":"error","message":"> Invalid ID Pet.***.","timestamp":"2024-12-21 15:45:54"}
+{"level":"error","message":"> Pet not found.***.","timestamp":"2024-12-21 15:46:09"}
